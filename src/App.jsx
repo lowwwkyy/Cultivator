@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ShieldAlert, AlertTriangle, BatteryWarning, TrendingDown, Target, Zap, Waves, LineChart, Globe, CheckCircle, ArrowRight } from 'lucide-react';
+import { ShieldAlert, AlertTriangle, BatteryWarning, TrendingDown, Target, Zap, Waves, LineChart, Globe, CheckCircle, ArrowRight, Menu, X } from 'lucide-react';
 
 import heroImg from './assets/hero.png';
 import hardwareImg from './assets/asia/S__238305299_0.jpg';
@@ -10,6 +10,9 @@ import teamJason from './assets/jason/DSC05327.JPG';
 import teamJaiJai from './assets/jason/DSC05255.JPG';
 import heroVideo from './assets/thailand_shrimp_farm_video.mp4';
 import shrimpPondImg from './assets/shrimp_pond.jpg';
+import sdg1Img from './assets/sdg_1.png';
+import sdg2Img from './assets/sdg_2.png';
+import sdg3Img from './assets/sdg_3.png';
 
 const teamPhotos = [teamFrans, teamDelon, teamJason, teamJaiJai];
 
@@ -57,30 +60,59 @@ const FadeIn = ({ children, delay = 0, className = "" }) => {
   );
 };
 
-const Navbar = () => (
-  <nav className="fixed top-0 w-full z-50 bg-navy/80 backdrop-blur-md border-b border-tealblue/30">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between items-center h-20">
-        <div className="flex items-center">
-          <Waves className="h-8 w-8 text-sunset-skyblue mr-2" />
-          <span className="font-bold text-2xl tracking-tight text-white">Cultivator</span>
-        </div>
-        <div className="hidden md:flex space-x-8">
-          <a href="#home" className="text-lightgrey hover:text-white transition">Home</a>
-          <a href="#product" className="text-lightgrey hover:text-white transition">Product</a>
-          <a href="#impact" className="text-lightgrey hover:text-white transition">Impact</a>
-          <a href="#business" className="text-lightgrey hover:text-white transition">Business Model</a>
-          <a href="#team" className="text-lightgrey hover:text-white transition">Team</a>
-        </div>
-        <div>
-          <button className="bg-sunset-orange hover:bg-sunset-orange/90 text-white px-6 py-2 rounded-full font-semibold transition shadow-[0_0_15px_rgba(255,145,16,0.4)]">
-            Join Pilot Program
-          </button>
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <nav className="fixed top-0 w-full z-50 bg-navy/80 backdrop-blur-md border-b border-tealblue/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          <div className="flex items-center">
+            <Waves className="h-8 w-8 text-sunset-skyblue mr-2" />
+            <span className="font-bold text-2xl tracking-tight text-white">Cultivator</span>
+          </div>
+          
+          {/* Desktop Menu */}
+          <div className="hidden md:flex space-x-8">
+            <a href="#home" className="text-lightgrey hover:text-white transition">Home</a>
+            <a href="#product" className="text-lightgrey hover:text-white transition">Product</a>
+            <a href="#impact" className="text-lightgrey hover:text-white transition">Impact</a>
+            <a href="#business" className="text-lightgrey hover:text-white transition">Business Model</a>
+            <a href="#team" className="text-lightgrey hover:text-white transition">Team</a>
+          </div>
+          <div className="hidden md:block">
+            <button className="bg-sunset-orange hover:bg-sunset-orange/90 text-white px-6 py-2 rounded-full font-semibold transition shadow-[0_0_15px_rgba(255,145,16,0.4)]">
+              Join Pilot Program
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-white hover:text-sunset-skyblue transition">
+              {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
-);
+
+      {/* Mobile Menu Overlay */}
+      {isOpen && (
+        <div className="md:hidden bg-navy/95 backdrop-blur-xl border-b border-tealblue/30 absolute top-20 left-0 w-full shadow-2xl">
+          <div className="flex flex-col px-4 pt-2 pb-6 space-y-4">
+            <a href="#home" onClick={() => setIsOpen(false)} className="text-lightgrey hover:text-white transition text-lg font-medium block py-2 border-b border-white/5">Home</a>
+            <a href="#product" onClick={() => setIsOpen(false)} className="text-lightgrey hover:text-white transition text-lg font-medium block py-2 border-b border-white/5">Product</a>
+            <a href="#impact" onClick={() => setIsOpen(false)} className="text-lightgrey hover:text-white transition text-lg font-medium block py-2 border-b border-white/5">Impact</a>
+            <a href="#business" onClick={() => setIsOpen(false)} className="text-lightgrey hover:text-white transition text-lg font-medium block py-2 border-b border-white/5">Business Model</a>
+            <a href="#team" onClick={() => setIsOpen(false)} className="text-lightgrey hover:text-white transition text-lg font-medium block py-2 border-b border-white/5">Team</a>
+            <button className="bg-sunset-orange hover:bg-sunset-orange/90 text-white px-6 py-3 rounded-full font-semibold transition shadow-[0_0_15px_rgba(255,145,16,0.4)] mt-4 w-full">
+              Join Pilot Program
+            </button>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
 
 const Hero = () => {
   const videoRef = useRef(null);
@@ -277,17 +309,17 @@ const Solution = () => (
         {/* Right Side: 3 Photos Grid */}
         <FadeIn delay={200} className="grid grid-cols-2 gap-4">
           {/* Top Photo (Full Width) */}
-          <div className="col-span-2 h-[250px] overflow-hidden rounded-2xl border border-tealblue/50 shadow-xl">
+          <div className="col-span-2 h-[180px] md:h-[250px] overflow-hidden rounded-2xl border border-tealblue/50 shadow-xl">
             <img src={shrimpPondImg} alt="Farm Setup" className="w-full h-full object-cover" />
           </div>
 
           {/* Bottom Left Photo */}
-          <div className="col-span-1 h-[200px] overflow-hidden rounded-2xl border border-tealblue/50 shadow-xl">
+          <div className="col-span-1 h-[140px] md:h-[200px] overflow-hidden rounded-2xl border border-tealblue/50 shadow-xl">
             <img src={hardwareImg} alt="Hardware Device" className="w-full h-full object-cover" />
           </div>
 
           {/* Bottom Right Photo */}
-          <div className="col-span-1 h-[200px] overflow-hidden rounded-2xl border border-tealblue/50 shadow-xl">
+          <div className="col-span-1 h-[140px] md:h-[200px] overflow-hidden rounded-2xl border border-tealblue/50 shadow-xl">
             <img src={appUiImg} alt="App Interface" className="w-full h-full object-cover" />
           </div>
         </FadeIn>
@@ -341,9 +373,9 @@ const Impact = () => (
       <FadeIn delay={300} className="py-12 mt-16 flex flex-col items-center justify-center gap-10 border-t border-tealblue/30">
         <h2 className="text-2xl md:text-3xl text-white font-semibold text-center">Our commitment to sustainable aquaculture.</h2>
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-          <img src="src\assets\sdg_1.png" alt="Placeholder 1" className="w-24 h-24 md:w-32 md:h-32 object-contain hover:scale-105 transition-transform cursor-pointer rounded-xl" />
-          <img src="src\assets\sdg_2.png" alt="Placeholder 2" className="w-24 h-24 md:w-32 md:h-32 object-contain hover:scale-105 transition-transform cursor-pointer rounded-xl" />
-          <img src="src\assets\sdg_3.png" alt="Placeholder 3" className="w-24 h-24 md:w-32 md:h-32 object-contain hover:scale-105 transition-transform cursor-pointer rounded-xl" />
+          <img src={sdg1Img} alt="Placeholder 1" className="w-24 h-24 md:w-32 md:h-32 object-contain hover:scale-105 transition-transform cursor-pointer rounded-xl" />
+          <img src={sdg2Img} alt="Placeholder 2" className="w-24 h-24 md:w-32 md:h-32 object-contain hover:scale-105 transition-transform cursor-pointer rounded-xl" />
+          <img src={sdg3Img} alt="Placeholder 3" className="w-24 h-24 md:w-32 md:h-32 object-contain hover:scale-105 transition-transform cursor-pointer rounded-xl" />
         </div>
       </FadeIn>
     </div>
@@ -351,7 +383,7 @@ const Impact = () => (
 );
 
 const Business = () => (
-  <section id="business" className="py-24 px-4 relative bg-navy overflow-hidden">
+  <section id="business" className="py-16 md:py-24 px-4 relative bg-navy overflow-hidden">
     {/* Background Image with Dark Overlay */}
     <div className="absolute inset-0 z-0">
       <img src={shrimpPondImg} alt="Background" className="w-full h-full object-cover opacity-80" />
@@ -404,7 +436,7 @@ const Business = () => (
 );
 
 const Traction = () => (
-  <section className="py-24 px-4 bg-navy relative border-y border-tealblue/20 overflow-hidden">
+  <section className="py-16 md:py-24 px-4 bg-navy relative border-y border-tealblue/20 overflow-hidden">
     <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-sunset-skyblue/5 rounded-full blur-[120px] transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
     <div className="max-w-6xl mx-auto relative z-10">
@@ -501,7 +533,7 @@ const Team = () => (
 );
 
 const CTASection = () => (
-  <section className="py-24 px-4 relative bg-navy overflow-hidden border-t border-tealblue/30">
+  <section className="py-16 md:py-24 px-4 relative bg-navy overflow-hidden border-t border-tealblue/30">
     <div className="absolute inset-0 z-0">
       <img src={shrimpPondImg} alt="Background" className="w-full h-full object-cover opacity-80" />
       <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/60 to-navy/30"></div>
@@ -530,7 +562,7 @@ const CTASection = () => (
         </FadeIn>
 
         {/* Right Side: Photo Collage Grid */}
-        <FadeIn delay={200} className="grid grid-cols-2 gap-4 h-[400px] md:h-[500px]">
+        <FadeIn delay={200} className="grid grid-cols-2 gap-4 h-[300px] md:h-[500px] mt-8 lg:mt-0">
           {/* Tall left image */}
           <div className="col-span-1 rounded-3xl overflow-hidden shadow-2xl border border-tealblue/30 relative">
             <img src={teamJaiJai} alt="Farmer" className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
