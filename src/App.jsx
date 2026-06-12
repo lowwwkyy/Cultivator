@@ -1,49 +1,55 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ShieldAlert, AlertTriangle, BatteryWarning, TrendingDown, Target, Zap, Waves, LineChart, Globe, CheckCircle, ArrowRight, Menu, X } from 'lucide-react';
+import { ArrowRight, BatteryWarning, Menu, ShieldAlert, TrendingDown, Waves, X } from 'lucide-react';
 
 import heroImg from './assets/hero.png';
 import hardwareImg from './assets/asia/S__238305299_0.jpg';
 import appUiImg from './assets/jason/DSC05276.JPG';
-import teamFrans from './assets/jason/DSC05281.JPG';
-import teamDelon from './assets/jason/DSC05310.JPG';
-import teamJason from './assets/jason/DSC05327.JPG';
-import teamJaiJai from './assets/jason/DSC05255.JPG';
-import heroVideo from './assets/thailand_shrimp_farm_video.mp4';
 import shrimpPondImg from './assets/shrimp_pond.jpg';
-import sdg1Img from './assets/sdg_1.png';
-import sdg2Img from './assets/sdg_2.png';
-import sdg3Img from './assets/sdg_3.png';
+import heroVideo from './assets/thailand_shrimp_farm_video.mp4';
+import logoImg from './assets/cultivator_logo.jpeg';
+
+import problemSilentFailImg from './assets/problem_silent_fail.png';
+import problemMassiveLossImg from './assets/problem_massive_loss.png';
+import problemFragileOpsImg from './assets/problem_fragile_ops.png';
+
+import gallery1 from './assets/asia/S__238305288_0.jpg';
+import gallery2 from './assets/jason/DSC05256.JPG';
+import gallery3 from './assets/asia/S__238305295_0.jpg';
+import gallery4 from './assets/jason/DSC05272.JPG';
+import gallery5 from './assets/asia/S__238305303_0.jpg';
+import gallery6 from './assets/jason/DSC05294.JPG';
+import gallery7 from './assets/asia/S__238305300_0.jpg';
+import gallery8 from './assets/jason/DSC05302.JPG';
 
 import InvestorPage from './InvestorPage';
 
-const teamPhotos = [teamFrans, teamDelon, teamJason, teamJaiJai];
-
-const GlassCard = ({ children, className = "" }) => (
-  <div className={`bg-darkblue/40 backdrop-blur-lg border border-tealblue/50 rounded-2xl p-6 shadow-xl ${className}`}>
+const GlassCard = ({ children, className = '' }) => (
+  <div className={`rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-xl ${className}`}>
     {children}
   </div>
 );
 
-const LiquidGlassCard = ({ children, className = "" }) => (
-  <div className={`bg-white/10 backdrop-blur-3xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] rounded-3xl p-8 relative overflow-hidden group hover:-translate-y-1 transition-all duration-300 ${className}`}>
-    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-50 pointer-events-none"></div>
-    <div className="relative z-10">
-      {children}
-    </div>
+const LiquidGlassCard = ({ children, className = '' }) => (
+  <div className={`relative overflow-hidden rounded-3xl border border-white/15 bg-white/10 p-6 shadow-[0_8px_32px_0_rgba(0,0,0,0.35)] backdrop-blur-2xl ${className}`}>
+    <div className="absolute inset-0 bg-linear-to-br from-white/10 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+    <div className="relative z-10">{children}</div>
   </div>
 );
 
-const FadeIn = ({ children, delay = 0, className = "" }) => {
-  const domRef = useRef();
+const FadeIn = ({ children, delay = 0, className = '' }) => {
+  const domRef = useRef(null);
   const [isVisible, setVisible] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        setVisible(true);
-        observer.unobserve(domRef.current);
-      }
-    }, { threshold: 0.1 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisible(true);
+          observer.unobserve(domRef.current);
+        }
+      },
+      { threshold: 0.15 }
+    );
 
     if (domRef.current) observer.observe(domRef.current);
     return () => observer.disconnect();
@@ -52,9 +58,7 @@ const FadeIn = ({ children, delay = 0, className = "" }) => {
   return (
     <div
       ref={domRef}
-      className={`transition-all duration-1000 ease-out ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-      } ${className}`}
+      className={`will-change-transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -62,207 +66,161 @@ const FadeIn = ({ children, delay = 0, className = "" }) => {
   );
 };
 
+const CursorGlow = () => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    let animationFrameId;
+    const handleMouseMove = (e) => {
+      animationFrameId = requestAnimationFrame(() => {
+        setPosition({ x: e.clientX, y: e.clientY });
+      });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return (
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden mix-blend-screen">
+      <div 
+        className="absolute w-[600px] h-[600px] bg-[radial-gradient(circle_at_center,rgba(85,212,255,0.06),transparent_60%)] rounded-full blur-3xl transition-transform duration-700 ease-out"
+        style={{ transform: `translate(${position.x - 300}px, ${position.y - 300}px)` }}
+      />
+    </div>
+  );
+};
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navItems = [
+    { label: 'Home', href: '#home' },
+    { label: 'Problem', href: '#problem' },
+    { label: 'Solution', href: '#solution' },
+    { label: 'Contact', href: '#contact' },
+  ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-navy/80 backdrop-blur-md border-b border-tealblue/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <div className="flex items-center">
-            <Waves className="h-8 w-8 text-sunset-skyblue mr-2" />
-            <span className="font-bold text-2xl tracking-tight text-white">Cultivator</span>
+    <div className="pointer-events-none fixed top-6 z-50 flex w-full justify-center px-4">
+      <nav className={`pointer-events-auto overflow-hidden border border-white/10 bg-darkblue/50 shadow-[0_8px_32px_0_rgba(0,0,0,0.45)] backdrop-blur-xl transition-all duration-500 ease-in-out ${isOpen ? 'w-full max-w-md rounded-3xl px-8 py-6' : 'rounded-full px-12 py-4'}`}>
+        <div className="flex items-center justify-center gap-4 relative">
+          <div className="hidden md:flex items-center gap-6 pr-6 border-r border-white/10">
+            <span className="flex items-center gap-2 text-xl font-bold tracking-wide text-white">
+              <img src={logoImg} alt="Cultivator Logo" className="h-8 w-8 rounded-full object-cover" />
+              Cultivator
+            </span>
           </div>
-          
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            <a href="#home" className="text-lightgrey hover:text-white transition">Home</a>
-            <a href="#product" className="text-lightgrey hover:text-white transition">Product</a>
-            <a href="#impact" className="text-lightgrey hover:text-white transition">Impact</a>
-            <a href="#business" className="text-lightgrey hover:text-white transition">Business Model</a>
-            <a href="#team" className="text-lightgrey hover:text-white transition">Team</a>
-          </div>
-          <div className="hidden md:block">
-            <button className="bg-sunset-orange hover:bg-sunset-orange/90 text-white px-6 py-2 rounded-full font-semibold transition shadow-[0_0_15px_rgba(255,145,16,0.4)]">
-              Join Pilot Program
-            </button>
+          <div className="hidden md:flex items-center space-x-10 pl-2">
+            {navItems.map((item) => (
+              <a key={item.label} href={item.href} className="text-base font-medium text-white/80 transition hover:text-white">
+                {item.label}
+              </a>
+            ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-white hover:text-sunset-skyblue transition">
-              {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+          <div className="md:hidden flex w-full items-center justify-between px-2">
+            <span className="flex items-center gap-2 text-lg font-bold tracking-wide text-white">
+              <img src={logoImg} alt="Cultivator Logo" className="h-7 w-7 rounded-full object-cover" />
+              Cultivator
+            </span>
+            <button onClick={() => setIsOpen((value) => !value)} className="ml-4 text-white transition hover:text-sunset-skyblue">
+              {isOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <div className="md:hidden bg-navy/95 backdrop-blur-xl border-b border-tealblue/30 absolute top-20 left-0 w-full shadow-2xl">
-          <div className="flex flex-col px-4 pt-2 pb-6 space-y-4">
-            <a href="#home" onClick={() => setIsOpen(false)} className="text-lightgrey hover:text-white transition text-lg font-medium block py-2 border-b border-white/5">Home</a>
-            <a href="#product" onClick={() => setIsOpen(false)} className="text-lightgrey hover:text-white transition text-lg font-medium block py-2 border-b border-white/5">Product</a>
-            <a href="#impact" onClick={() => setIsOpen(false)} className="text-lightgrey hover:text-white transition text-lg font-medium block py-2 border-b border-white/5">Impact</a>
-            <a href="#business" onClick={() => setIsOpen(false)} className="text-lightgrey hover:text-white transition text-lg font-medium block py-2 border-b border-white/5">Business Model</a>
-            <a href="#team" onClick={() => setIsOpen(false)} className="text-lightgrey hover:text-white transition text-lg font-medium block py-2 border-b border-white/5">Team</a>
-            <button className="bg-sunset-orange hover:bg-sunset-orange/90 text-white px-6 py-3 rounded-full font-semibold transition shadow-[0_0_15px_rgba(255,145,16,0.4)] mt-4 w-full">
-              Join Pilot Program
-            </button>
-          </div>
+        <div className={`md:hidden flex flex-col items-center space-y-5 overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'mt-8 max-h-112.5 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`}>
+          {navItems.map((item) => (
+            <a key={item.label} href={item.href} onClick={() => setIsOpen(false)} className="text-lg font-medium text-white/80 transition hover:text-white">
+              {item.label}
+            </a>
+          ))}
         </div>
-      )}
-    </nav>
+      </nav>
+    </div>
   );
 };
 
-const Hero = () => {
-  const videoRef = useRef(null);
-  const [scrollOpacity, setScrollOpacity] = useState(1);
+const Hero = ({ onInvestorClick }) => (
+  <section id="home" className="relative min-h-screen overflow-hidden px-4 pb-16 pt-28">
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="absolute inset-0 h-full w-full object-cover opacity-[67%]"
+    >
+      <source src={heroVideo} type="video/mp4" />
+    </video>
+    <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-navy/10 via-navy/40 to-navy"></div>
+    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(85,212,255,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(255,145,16,0.12),transparent_30%)]"></div>
 
-  // Fade video based on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const fadeEnd = 600; // Fully transparent after 600px of scrolling
-      const opacity = Math.max(0, 1 - window.scrollY / fadeEnd);
-      setScrollOpacity(opacity);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Ping-pong video logic
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    let isReversing = false;
-    let reverseInterval = null;
-
-    const startReverse = () => {
-      isReversing = true;
-      video.pause();
-
-      // We use a manual interval scrub because setting playbackRate = -1 
-      // isn't natively smooth/supported across all browsers.
-      // This steps the video back manually at roughly 30fps.
-      reverseInterval = setInterval(() => {
-        if (video.currentTime <= 0.1) {
-          clearInterval(reverseInterval);
-          isReversing = false;
-          video.play();
-        } else {
-          video.currentTime = Math.max(0, video.currentTime - 0.033);
-        }
-      }, 33);
-    };
-
-    const handleTimeUpdate = () => {
-      if (!isReversing && video.currentTime >= video.duration - 0.1) {
-        startReverse();
-      }
-    };
-
-    video.addEventListener('timeupdate', handleTimeUpdate);
-    return () => {
-      video.removeEventListener('timeupdate', handleTimeUpdate);
-      if (reverseInterval) clearInterval(reverseInterval);
-    };
-  }, []);
-
-  return (
-    <section id="home" className="min-h-screen pt-24 pb-12 px-4 relative overflow-hidden flex items-center justify-center">
-      {/* Background Video Wrapper with dynamic opacity */}
-      <div
-        className="absolute inset-0 z-0 transition-opacity duration-75"
-        style={{ opacity: scrollOpacity }}
-      >
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
-      </div>
-
-      {/* Subtle Gradient Overlays for Video Clarity & Text Contrast */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(11,26,51,0.6)_0%,transparent_60%)] z-10"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent z-10 opacity-80"></div>
-
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-tealblue/20 rounded-full blur-[100px] z-10 pointer-events-none"></div>
-
-      <div className="max-w-4xl w-full mx-auto flex flex-col items-center text-center z-20 relative">
-        <div className="space-y-8 flex flex-col items-center">
-          <h1
-            className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-white tracking-tight"
-            style={{ textShadow: "0 4px 30px rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.6)" }}
-          >
-            Prevent shrimp pond collapse <br className="hidden md:block" /><span className="text-sunset-skyblue">before it happens.</span>
+    <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center justify-center text-center min-h-[calc(100vh-7rem)]">
+      <FadeIn className="space-y-8">
+        <div className="space-y-6">
+          <h1 className="text-5xl font-extrabold leading-tight tracking-tight text-white md:text-6xl lg:text-7xl" style={{ textShadow: '0 4px 30px rgba(0,0,0,0.6)' }}>
+            Future of <br className="hidden md:block" />
+            <span className="text-sunset-skyblue">Shrimp Farm.</span>
           </h1>
-          <p
-            className="text-xl md:text-2xl text-white leading-relaxed max-w-2xl font-medium"
-            style={{ textShadow: "0 2px 20px rgba(0,0,0,0.9), 0 1px 5px rgba(0,0,0,0.8)" }}
-          >
-            A smart aeration system for 3.5 million smallholder farmers. We turn a NT$24,000 sensor into a NT$600,000 safety net.
+          <p className="mx-auto max-w-3xl text-xl font-medium leading-relaxed text-white/85 md:text-2xl">
+            Partner with Cultivator to support next-generation smart aquaculture technology.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-            <button className="bg-sunset-orange hover:bg-sunset-orange/90 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-[0_0_20px_rgba(255,145,16,0.6),0_4px_15px_rgba(0,0,0,0.5)] hover:-translate-y-1">
-              Join Pilot Program
-            </button>
-            <button className="bg-navy/60 backdrop-blur-md border border-lightgrey text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-navy/80 transition shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:-translate-y-1">
-              See How It Works
-            </button>
-          </div>
         </div>
-      </div>
-    </section>
-  );
-};
+        <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:justify-center">
+          <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-sunset-orange px-8 py-4 text-lg font-bold text-white shadow-[0_0_20px_rgba(255,145,16,0.6),0_4px_15px_rgba(0,0,0,0.5)] transition hover:-translate-y-1 hover:bg-sunset-orange/90">
+            Learn More <ArrowRight className="h-5 w-5" />
+          </a>
+          <button onClick={onInvestorClick} className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-lg font-bold text-white transition hover:-translate-y-1 hover:bg-white/10">
+            Become a Partner
+          </button>
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+);
 
 const Problem = () => (
-  <section className="py-20 px-4 relative">
-    <div className="max-w-7xl mx-auto">
+  <section id="problem" className="relative px-4 py-20">
+    <div className="mx-auto max-w-7xl relative z-10">
       <FadeIn>
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">One Harvest Away from Total Bankruptcy.</h2>
-          <p className="text-xl text-lightgrey">Industry monitors water conditions, but who looks after the machine that keeps the shrimp alive?</p>
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">Problems with aerators.</h2>
         </div>
       </FadeIn>
 
-      <div className="grid md:grid-cols-3 gap-8">
-        <FadeIn delay={100}>
-          <div className="relative rounded-3xl overflow-hidden aspect-[4/5] group cursor-pointer hover:-translate-y-2 transition-transform duration-300 shadow-xl border border-tealblue/20">
-            <img src={shrimpPondImg} alt="Fragile Operations" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
-              <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-md">Fragile Operations</h3>
-              <p className="text-lightgrey font-medium leading-relaxed drop-shadow-md">Requires 24/7 monitoring. Without constant supervision, farmers are gambling their entire livelihood.</p>
+      <div className="grid gap-6 md:grid-cols-3">
+        <FadeIn delay={100} className="h-full">
+          <div className="relative h-full min-h-[380px] rounded-4xl overflow-hidden group animate-float [animation-delay:0s] shadow-2xl border border-white/10">
+            <img src={problemSilentFailImg} alt="Failures go undetected" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-navy/70 transition-colors duration-500 group-hover:bg-navy/50 backdrop-blur-[2px]"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-navy/95 via-navy/40 to-transparent"></div>
+            <div className="relative z-10 flex flex-col justify-end h-full p-8">
+              <h3 className="mb-3 text-2xl font-bold text-white group-hover:text-rose-400 transition-colors">Failures go undetected</h3>
+              <p className="text-white/80 leading-relaxed">Aerator Failures are often caught too late, resulting in immediate effect of the shrimps stress level and immune system.</p>
             </div>
           </div>
         </FadeIn>
-
-        <FadeIn delay={200}>
-          <div className="relative rounded-3xl overflow-hidden aspect-[4/5] group cursor-pointer hover:-translate-y-2 transition-transform duration-300 shadow-xl border border-tealblue/20">
-            <img src={hardwareImg} alt="Silent Failure" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
-              <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-md">Silent Failure</h3>
-              <p className="text-lightgrey font-medium leading-relaxed drop-shadow-md">A single 4-hour failure can wipe out an entire crop. By the time you notice, the shrimp are already dying.</p>
+        <FadeIn delay={200} className="h-full">
+          <div className="relative h-full min-h-[380px] rounded-4xl overflow-hidden group animate-float [animation-delay:1s] shadow-2xl border border-white/10">
+            <img src={problemFragileOpsImg} alt="Electricity Cost Too High!" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-navy/70 transition-colors duration-500 group-hover:bg-navy/50 backdrop-blur-[2px]"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-navy/95 via-navy/40 to-transparent"></div>
+            <div className="relative z-10 flex flex-col justify-end h-full p-8">
+              <h3 className="mb-3 text-2xl font-bold text-white group-hover:text-amber-400 transition-colors">Electricity Cost Too High!</h3>
+              <p className="text-white/80 leading-relaxed">The second highest cost goes to the electricity cost, ranking second to feeding.</p>
             </div>
           </div>
         </FadeIn>
-
-        <FadeIn delay={300}>
-          <div className="relative rounded-3xl overflow-hidden aspect-[4/5] group cursor-pointer hover:-translate-y-2 transition-transform duration-300 shadow-xl border border-tealblue/20">
-            <img src={appUiImg} alt="Massive Losses" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
-              <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-md">Massive Losses</h3>
-              <p className="text-lightgrey font-medium leading-relaxed drop-shadow-md">A $6,000 NTD machine failure destroys -$600,000 NTD of shrimp. The math doesn't work in the farmer's favor.</p>
+        <FadeIn delay={300} className="h-full">
+          <div className="relative h-full min-h-[380px] rounded-4xl overflow-hidden group animate-float [animation-delay:2s] shadow-2xl border border-white/10">
+            <img src={problemMassiveLossImg} alt="Smaller Shrimp" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-navy/70 transition-colors duration-500 group-hover:bg-navy/50 backdrop-blur-[2px]"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-navy/95 via-navy/40 to-transparent"></div>
+            <div className="relative z-10 flex flex-col justify-end h-full p-8">
+              <h3 className="mb-3 text-2xl font-bold text-white group-hover:text-sunset-orange transition-colors">Smaller Shrimp</h3>
+              <p className="text-white/80 leading-relaxed">Farmers are forced to harvest their shrimp earlier, meaning a smaller harvest; lower revenue.</p>
             </div>
           </div>
         </FadeIn>
@@ -272,339 +230,110 @@ const Problem = () => (
 );
 
 const Solution = () => (
-  <section id="product" className="py-20 px-4 relative overflow-hidden">
-    <div className="absolute right-0 top-1/2 w-96 h-96 bg-sunset-skyblue/10 rounded-full blur-[120px] z-[-1] translate-x-1/2"></div>
-    <div className="max-w-7xl mx-auto">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        {/* Left Side: Explanation */}
+  <section id="solution" className="relative overflow-hidden px-4 py-20">
+    <div className="absolute right-0 top-1/2 z-[-1] h-96 w-96 translate-x-1/2 rounded-full bg-sunset-skyblue/10 blur-[120px]"></div>
+    <div className="mx-auto max-w-7xl">
+      <div className="grid items-center gap-12 lg:grid-cols-2">
         <FadeIn className="space-y-8">
-          <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-            Predictive Intelligence at the <span className="text-sunset-skyblue">Pond's Edge.</span>
+          <h2 className="text-3xl font-bold leading-tight text-white md:text-5xl">
+            Plug, Play, and <span className="text-sunset-skyblue">Protect.</span>
           </h2>
-          <p className="text-xl text-lightgrey leading-relaxed">
-            The sensor catches the data; the app gives the alert. We replace manual guesswork with a sensor that monitors vibration and electrical current.
+          <p className="text-xl leading-relaxed text-lightgrey">We install directly onto your existing equipment.</p>
+
+          <div className="space-y-5">
+            <LiquidGlassCard>
+              <h3 className="mb-3 text-xl font-bold text-white">The Hardware</h3>
+              <p className="leading-relaxed text-white/80">Our waterproof sensors track electrical current (power loss/overload) and mechanical vibration (abnormal wear) 24/7.</p>
+            </LiquidGlassCard>
+            <LiquidGlassCard>
+              <h3 className="mb-3 text-xl font-bold text-white">The AeroTrust App</h3>
+              <p className="leading-relaxed text-white/80">Get instant fault notifications and real-time anomaly detection straight to your phone.</p>
+            </LiquidGlassCard>
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={150} className="grid items-stretch gap-4 md:grid-cols-2">
+          <div className="relative min-h-80 overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-2xl md:min-h-115">
+            <img src={hardwareImg} alt="Hardware mounted on aerator" className="absolute inset-0 h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-linear-to-t from-navy/75 via-transparent to-transparent"></div>
+            <div className="absolute bottom-0 left-0 p-5">
+              <p className="font-semibold text-white">Hardware on Aerator</p>
+            </div>
+          </div>
+          <div className="relative min-h-80 overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-2xl md:min-h-115">
+            <img src={appUiImg} alt="AeroTrust mobile dashboard mockup" className="absolute inset-0 h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-linear-to-t from-navy/75 via-transparent to-transparent"></div>
+            <div className="absolute bottom-0 left-0 p-5">
+              <p className="font-semibold text-white">AeroTrust Dashboard</p>
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+    </div>
+  </section>
+);
+
+const Gallery = () => {
+  const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8];
+  
+  return (
+    <section className="relative overflow-hidden py-24">
+      <div className="mb-12 text-center px-4 relative z-10">
+        <h2 className="text-3xl font-bold text-white md:text-5xl">Real Operations, <span className="text-sunset-skyblue">Real Impact.</span></h2>
+        <p className="mt-4 text-xl text-lightgrey">A glimpse into our pilot testing and field deployments across Asia.</p>
+      </div>
+      
+      {/* Marquee container with fade edges */}
+      <div className="relative flex w-full overflow-hidden">
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-linear-to-r from-navy to-transparent md:w-64"></div>
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-linear-to-l from-navy to-transparent md:w-64"></div>
+        
+        <div className="flex animate-marquee whitespace-nowrap hover:[animation-play-state:paused]">
+          {[...images, ...images, ...images].map((src, index) => (
+            <div key={index} className="mx-4 relative overflow-hidden rounded-3xl border border-white/10 w-72 h-52 sm:w-96 sm:h-64 shrink-0 shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
+              <img src={src} alt={`Field operation ${index}`} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-110" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CTASection = ({ onInvestorClick }) => (
+  <section id="contact" className="relative overflow-hidden border-t border-tealblue/30 px-4 py-20 md:py-24">
+    <div className="absolute inset-0 z-0">
+      <img src={shrimpPondImg} alt="Aquaculture pond background" className="h-full w-full object-cover opacity-70" />
+      <div className="absolute inset-0 bg-linear-to-r from-navy/95 via-navy/75 to-navy/40"></div>
+    </div>
+
+    <div className="relative z-10 mx-auto max-w-5xl text-center">
+      <FadeIn>
+        <div className="rounded-4xl border border-white/10 bg-white/5 px-6 py-12 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl md:px-12 md:py-16">
+          <h2 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-white drop-shadow-lg md:text-6xl">Built for the Future of Aquaculture.</h2>
+          <p className="mx-auto mb-10 max-w-3xl text-xl font-medium leading-relaxed text-white/90">
+            Join the farmers in Taiwan and Indonesia who are already committing to our pilot program. Let&apos;s make your farm smarter, together.
           </p>
-
-          <div className="space-y-4">
-            <p className="text-lg text-white font-semibold">Proactive monitoring starts with:</p>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-3">
-                <div className="bg-sunset-orange/20 p-1 rounded-full"><CheckCircle className="w-5 h-5 text-sunset-orange" /></div>
-                <span className="text-lightgrey">24/7 continuous aerator tracking</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="bg-sunset-orange/20 p-1 rounded-full"><CheckCircle className="w-5 h-5 text-sunset-orange" /></div>
-                <span className="text-lightgrey">Real-time vibration anomaly detection</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="bg-sunset-orange/20 p-1 rounded-full"><CheckCircle className="w-5 h-5 text-sunset-orange" /></div>
-                <span className="text-lightgrey">Instant mobile app alerts before oxygen drops</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="bg-sunset-orange/20 p-1 rounded-full"><CheckCircle className="w-5 h-5 text-sunset-orange" /></div>
-                <span className="text-lightgrey">Lower energy consumption and costs</span>
-              </li>
-            </ul>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <a href="mailto:ddieong04@gmail.com" className="inline-flex items-center justify-center gap-2 rounded-full bg-sunset-orange px-8 py-4 text-lg font-bold text-white shadow-[0_0_20px_rgba(255,145,16,0.45)] transition hover:-translate-y-1 hover:bg-sunset-orange/90">
+              Contact Us to Upgrade Your Farm <ArrowRight className="h-5 w-5" />
+            </a>
+            <button onClick={onInvestorClick} className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-lg font-bold text-white transition hover:-translate-y-1 hover:bg-white/10">
+              Become Our Partner
+            </button>
           </div>
-        </FadeIn>
-
-        {/* Right Side: 3 Photos Grid */}
-        <FadeIn delay={200} className="grid grid-cols-2 gap-4">
-          {/* Top Photo (Full Width) */}
-          <div className="col-span-2 h-[180px] md:h-[250px] overflow-hidden rounded-2xl border border-tealblue/50 shadow-xl">
-            <img src={shrimpPondImg} alt="Farm Setup" className="w-full h-full object-cover" />
-          </div>
-
-          {/* Bottom Left Photo */}
-          <div className="col-span-1 h-[140px] md:h-[200px] overflow-hidden rounded-2xl border border-tealblue/50 shadow-xl">
-            <img src={hardwareImg} alt="Hardware Device" className="w-full h-full object-cover" />
-          </div>
-
-          {/* Bottom Right Photo */}
-          <div className="col-span-1 h-[140px] md:h-[200px] overflow-hidden rounded-2xl border border-tealblue/50 shadow-xl">
-            <img src={appUiImg} alt="App Interface" className="w-full h-full object-cover" />
-          </div>
-        </FadeIn>
-      </div>
-    </div>
-  </section>
-);
-
-const Impact = () => (
-  <section id="impact" className="py-20 px-4">
-    <div className="max-w-7xl mx-auto">
-      <FadeIn>
-        <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">Less waste. Lower risk. <br /><span className="text-sunset-skyblue">More predictable outcomes.</span></h2>
-      </FadeIn>
-
-      <div className="grid md:grid-cols-3 gap-8 md:gap-12 mb-12 items-start">
-        {/* Column 1: Image Top */}
-        <FadeIn className="flex flex-col gap-6">
-          <div className="rounded-3xl overflow-hidden aspect-[4/3] shadow-lg border border-tealblue/20">
-            <img src={shrimpPondImg} className="w-full h-full object-cover" alt="Energy Saved" />
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold mb-2 text-white">27.6% Energy Saved</h3>
-            <p className="text-lightgrey leading-relaxed">~9 GJ per crop by optimizing aerator runtime and lowering overall power consumption without risking the shrimp.</p>
-          </div>
-        </FadeIn>
-
-        {/* Column 2: Text Top (on Desktop) */}
-        <FadeIn delay={100} className="flex flex-col md:flex-col-reverse gap-6">
-          <div className="rounded-3xl overflow-hidden aspect-[4/3] shadow-lg border border-tealblue/20">
-            <img src={hardwareImg} className="w-full h-full object-cover" alt="Loss Prevented" />
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold mb-2 text-white">NTD 300K+ Prevented</h3>
-            <p className="text-lightgrey leading-relaxed">Added directly to the farmer's pocket per crop by eliminating the risk of sudden catastrophic aerator failures.</p>
-          </div>
-        </FadeIn>
-
-        {/* Column 3: Image Top */}
-        <FadeIn delay={200} className="flex flex-col gap-6">
-          <div className="rounded-3xl overflow-hidden aspect-[4/3] shadow-lg border border-tealblue/20">
-            <img src={appUiImg} className="w-full h-full object-cover" alt="Survival Rate" />
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold mb-2 text-white">90% Survival Rate</h3>
-            <p className="text-lightgrey leading-relaxed">Pushing survival rates up to industry-leading levels by proactively preventing catastrophic wipeouts.</p>
-          </div>
-        </FadeIn>
-      </div>
-
-      <FadeIn delay={300} className="py-12 mt-16 flex flex-col items-center justify-center gap-10 border-t border-tealblue/30">
-        <h2 className="text-2xl md:text-3xl text-white font-semibold text-center">Our commitment to sustainable aquaculture.</h2>
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-          <img src={sdg1Img} alt="Placeholder 1" className="w-24 h-24 md:w-32 md:h-32 object-contain hover:scale-105 transition-transform cursor-pointer rounded-xl" />
-          <img src={sdg2Img} alt="Placeholder 2" className="w-24 h-24 md:w-32 md:h-32 object-contain hover:scale-105 transition-transform cursor-pointer rounded-xl" />
-          <img src={sdg3Img} alt="Placeholder 3" className="w-24 h-24 md:w-32 md:h-32 object-contain hover:scale-105 transition-transform cursor-pointer rounded-xl" />
         </div>
       </FadeIn>
-    </div>
-  </section>
-);
-
-const Business = () => (
-  <section id="business" className="py-16 md:py-24 px-4 relative bg-navy overflow-hidden">
-    {/* Background Image with Dark Overlay */}
-    <div className="absolute inset-0 z-0">
-      <img src={shrimpPondImg} alt="Background" className="w-full h-full object-cover opacity-80" />
-      <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/40 to-navy/90"></div>
-    </div>
-
-    <div className="max-w-7xl mx-auto relative z-10">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg tracking-tight">Affordable and Proactive.</h2>
-            <p className="text-xl text-white/80 mb-10 leading-relaxed font-medium">
-              Our B2B2Farmer model ensures low barrier to entry while maintaining sustainable operations for our network.
-            </p>
-          </FadeIn>
-          <div className="space-y-6">
-            <FadeIn delay={100}>
-              <LiquidGlassCard className="border-l-4 border-l-sunset-skyblue">
-                <h3 className="text-2xl font-bold text-white mb-2">NT$4,500 <span className="text-base text-white/60 font-normal">/ year / pond</span></h3>
-                <p className="text-white/80 font-medium">SaaS utility fee for 24/7 predictive alerts & dashboard access.</p>
-              </LiquidGlassCard>
-            </FadeIn>
-            <FadeIn delay={200}>
-              <LiquidGlassCard className="border-l-4 border-l-emerald-400">
-                <h3 className="text-2xl font-bold text-white mb-2">NT$20,000 <span className="text-base text-white/60 font-normal">for 10 units</span></h3>
-                <p className="text-white/80 font-medium">One-time hardware cost. Durable, rugged, and built to last.</p>
-              </LiquidGlassCard>
-            </FadeIn>
-          </div>
-        </div>
-        <div className="space-y-6">
-          <FadeIn delay={300}>
-            <LiquidGlassCard>
-              <h3 className="text-xl font-bold mb-4 text-white/90 flex items-center gap-2"><Globe className="text-sunset-skyblue h-6 w-6" /> Global Hardware Market</h3>
-              <div className="text-5xl font-extrabold text-white mb-3 tracking-tight">~$800M</div>
-              <p className="text-white/80 font-medium">Total Addressable Market (TAM)</p>
-            </LiquidGlassCard>
-          </FadeIn>
-          <FadeIn delay={400}>
-            <LiquidGlassCard>
-              <h3 className="text-xl font-bold mb-4 text-white/90 flex items-center gap-2"><Target className="text-emerald-400 h-6 w-6" /> Initial Target</h3>
-              <div className="text-5xl font-extrabold text-white mb-3 tracking-tight">~$50M</div>
-              <p className="text-white/80 font-medium">Serviceable Obtainable Market (SOM)<br /><span className="text-sm opacity-80 mt-1 block">Taiwan Pilot + 10% SEA integration</span></p>
-            </LiquidGlassCard>
-          </FadeIn>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const Traction = () => (
-  <section className="py-16 md:py-24 px-4 bg-navy relative border-y border-tealblue/20 overflow-hidden">
-    <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-sunset-skyblue/5 rounded-full blur-[120px] transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-
-    <div className="max-w-6xl mx-auto relative z-10">
-      <div className="text-center mb-24">
-        <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white tracking-tight">Scaling the Impact.</h2>
-      </div>
-
-      <div className="relative space-y-16 md:space-y-0">
-        {/* Vertical connecting line */}
-        <div className="hidden md:block absolute left-1/2 top-12 bottom-12 w-1 bg-gradient-to-b from-tealblue/10 via-sunset-skyblue/50 to-tealblue/10 transform -translate-x-1/2 z-0"></div>
-
-        {/* 2026 */}
-        <div className="flex flex-col md:flex-row items-center justify-between w-full relative z-10 py-12 group">
-          <div className="md:w-5/12 md:text-right md:pr-12 mb-8 md:mb-0">
-            <div className="inline-block text-sunset-skyblue font-bold text-xl mb-2 tracking-widest uppercase">2026</div>
-            <h3 className="text-3xl font-bold mb-4 text-white">Pilot Launch</h3>
-            <p className="text-lg text-lightgrey leading-relaxed">
-              Final MVP & Pilot farms operational in Taiwan. Testing the durability of our hardware sensors and refining our predictive AI models.
-            </p>
-          </div>
-          <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-navy border-4 border-sunset-skyblue z-20 shadow-[0_0_15px_rgba(85,212,255,0.5)] group-hover:scale-125 transition-transform duration-300"></div>
-          <div className="w-full md:w-5/12 rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-tealblue/30 aspect-[4/3] relative">
-            <img src={hardwareImg} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="2026 Pilot Launch" />
-          </div>
-        </div>
-
-        {/* 2028 */}
-        <div className="flex flex-col md:flex-row-reverse items-center justify-between w-full relative z-10 py-12 group">
-          <div className="md:w-5/12 md:text-left md:pl-12 mb-8 md:mb-0">
-            <div className="inline-block bg-sunset-skyblue text-navy px-4 py-1 rounded-full font-bold text-sm mb-4 uppercase tracking-widest">2028</div>
-            <h3 className="text-3xl font-bold mb-4 text-white">B2B2F Rollout</h3>
-            <p className="text-lg text-lightgrey leading-relaxed">
-              Commercial launch across key Asian aquaculture hubs. Establishing strong distribution partnerships to reach thousands of farmers rapidly.
-            </p>
-          </div>
-          <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-sunset-skyblue border-4 border-navy z-20 shadow-[0_0_15px_rgba(85,212,255,0.8)] group-hover:scale-125 transition-transform duration-300"></div>
-          <div className="w-full md:w-5/12 rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-tealblue/30 aspect-[4/3] relative">
-            <img src={appUiImg} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="2028 B2B2F Rollout" />
-          </div>
-        </div>
-
-        {/* 2030 */}
-        <div className="flex flex-col md:flex-row items-center justify-between w-full relative z-10 py-12 group">
-          <div className="md:w-5/12 md:text-right md:pr-12 mb-8 md:mb-0">
-            <div className="inline-block text-sunset-skyblue font-bold text-xl mb-2 tracking-widest uppercase">2030</div>
-            <h3 className="text-3xl font-bold mb-4 text-white">Mass Adoption</h3>
-            <p className="text-lg text-lightgrey leading-relaxed">
-              15,000 Farmers protected across Southeast Asia. Creating a more resilient, predictable, and fair global shrimp supply chain.
-            </p>
-          </div>
-          <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-navy border-4 border-sunset-skyblue z-20 shadow-[0_0_15px_rgba(85,212,255,0.5)] group-hover:scale-125 transition-transform duration-300"></div>
-          <div className="w-full md:w-5/12 rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-tealblue/30 aspect-[4/3] relative">
-            <img src={shrimpPondImg} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="2030 Mass Adoption" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const Team = () => (
-  <section id="team" className="py-20 px-4">
-    <div className="max-w-7xl mx-auto">
-      <FadeIn>
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Made by collaborative team from NTHU.</h2>
-          <p className="text-xl text-lightgrey">Delivering engineering excellence from the lab to the pond. Backed by NTHU Garage.</p>
-        </div>
-      </FadeIn>
-
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[{ name: "Frans", role: "Product Strategy" }, { name: "Delon", role: "Marketing" }, { name: "Jason", role: "AI Systems Data" }, { name: "Jai Jai", role: "Hardware Design" }].map((member, i) => (
-          <FadeIn key={i} delay={i * 100}>
-            <div className="relative group rounded-3xl overflow-hidden aspect-[3/4] hover:-translate-y-2 transition-all duration-300 shadow-xl border border-tealblue/30 cursor-pointer">
-              <img
-              src={teamPhotos[i]}
-              alt={member.name}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            {/* Black shading fading in from below */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-            {/* Text Content */}
-            <div className="absolute inset-0 p-6 flex flex-col justify-end text-left z-10">
-              <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-md">{member.name}</h3>
-              <p className="text-sunset-skyblue text-sm font-bold uppercase tracking-wider drop-shadow-md">{member.role}</p>
-            </div>
-            </div>
-          </FadeIn>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const CTASection = ({ onPartnerClick }) => (
-  <section className="py-16 md:py-24 px-4 relative bg-navy overflow-hidden border-t border-tealblue/30">
-    <div className="absolute inset-0 z-0">
-      <img src={shrimpPondImg} alt="Background" className="w-full h-full object-cover opacity-80" />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/60 to-navy/30"></div>
-    </div>
-
-    <div className="max-w-7xl mx-auto relative z-10">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
-        {/* Left Side: Text and Buttons */}
-        <FadeIn>
-          <div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg tracking-tight leading-tight">
-              Start monitoring before the next failure.
-            </h2>
-            <p className="text-xl text-white/90 mb-10 leading-relaxed font-medium max-w-lg drop-shadow-md">
-              Cultivator replaces manual guesswork with continuous vibration and electrical current monitoring. A stronger shrimp industry benefits everyone.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex items-center justify-center gap-2 bg-sunset-orange hover:bg-sunset-orange/90 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-[0_0_20px_rgba(255,145,16,0.4)] group">
-                Apply for Pilot Program <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              {/* Added onClick={onPartnerClick} to this button */}
-              <button 
-                onClick={onPartnerClick}
-                className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition shadow-lg group"
-              >
-                Partner With Us <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-          </div>
-        </FadeIn>
-
-        {/* Right Side: Photo Collage Grid */}
-        <FadeIn delay={200} className="grid grid-cols-2 gap-4 h-[300px] md:h-[500px] mt-8 lg:mt-0">
-          {/* Tall left image */}
-          <div className="col-span-1 rounded-3xl overflow-hidden shadow-2xl border border-tealblue/30 relative">
-            <img src={teamJaiJai} alt="Farmer" className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-          </div>
-          {/* Two stacked right images */}
-          <div className="col-span-1 grid grid-rows-2 gap-4 h-full">
-            <div className="rounded-3xl overflow-hidden shadow-2xl border border-tealblue/30 relative">
-               <img src={hardwareImg} alt="Hardware" className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-            </div>
-            <div className="rounded-3xl overflow-hidden shadow-2xl border border-tealblue/30 relative">
-               <img src={appUiImg} alt="App" className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-            </div>
-          </div>
-        </FadeIn>
-      </div>
     </div>
   </section>
 );
 
 const Footer = () => (
-  <footer className="bg-navy border-t border-tealblue/30 pt-12 pb-8 px-4 relative overflow-hidden">
-    <div className="max-w-7xl mx-auto relative z-10">
-      <div className="flex flex-col md:flex-row justify-between items-center">
-        <div className="flex items-center mb-4 md:mb-0">
-          <Waves className="h-6 w-6 text-sunset-skyblue mr-2" />
-          <span className="font-bold text-xl text-white">Cultivator</span>
-        </div>
-        <div className="flex gap-6 mb-4 md:mb-0">
-          <a href="#" className="text-lightgrey hover:text-white text-sm transition">Privacy Policy</a>
-          <a href="#" className="text-lightgrey hover:text-white text-sm transition">Terms of Service</a>
-          <a href="#" className="text-lightgrey hover:text-white text-sm transition">Contact</a>
-        </div>
-        <div className="text-lightgrey text-sm">
-          &copy; 2026 Cultivator. All rights reserved.
-        </div>
-      </div>
+  <footer className="border-t border-tealblue/30 bg-navy px-4 py-10">
+    <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-sm text-lightgrey md:flex-row">
+      <span className="font-bold text-white">Cultivator</span>
+      <span>Partnering with shrimp farmers across Asia.</span>
+      <span>&copy; 2026 Cultivator. All rights reserved.</span>
     </div>
   </footer>
 );
@@ -612,22 +341,23 @@ const Footer = () => (
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
+  }, []);
 
   if (currentPage === 'investor') {
     return <InvestorPage onNavigateBack={() => setCurrentPage('home')} />;
   }
 
   return (
-    <div className="min-h-screen bg-navy text-white selection:bg-sunset-skyblue selection:text-navy">
+    <div className="min-h-screen bg-navy text-white selection:bg-sunset-skyblue selection:text-navy relative">
+      <CursorGlow />
       <Navbar />
-      <Hero />
+      <Hero onInvestorClick={() => setCurrentPage('investor')} />
       <Problem />
       <Solution />
-      <Impact />
-      <Business />
-      <Traction />
-      <Team />
-      <CTASection onPartnerClick={() => setCurrentPage('investor')} />
+      <Gallery />
+      <CTASection onInvestorClick={() => setCurrentPage('investor')} />
       <Footer />
     </div>
   );
