@@ -14,6 +14,8 @@ import sdg1Img from './assets/sdg_1.png';
 import sdg2Img from './assets/sdg_2.png';
 import sdg3Img from './assets/sdg_3.png';
 
+import InvestorPage from './InvestorPage';
+
 const teamPhotos = [teamFrans, teamDelon, teamJason, teamJaiJai];
 
 const GlassCard = ({ children, className = "" }) => (
@@ -532,7 +534,7 @@ const Team = () => (
   </section>
 );
 
-const CTASection = () => (
+const CTASection = ({ onPartnerClick }) => (
   <section className="py-16 md:py-24 px-4 relative bg-navy overflow-hidden border-t border-tealblue/30">
     <div className="absolute inset-0 z-0">
       <img src={shrimpPondImg} alt="Background" className="w-full h-full object-cover opacity-80" />
@@ -554,7 +556,11 @@ const CTASection = () => (
               <button className="flex items-center justify-center gap-2 bg-sunset-orange hover:bg-sunset-orange/90 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-[0_0_20px_rgba(255,145,16,0.4)] group">
                 Apply for Pilot Program <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition shadow-lg group">
+              {/* Added onClick={onPartnerClick} to this button */}
+              <button 
+                onClick={onPartnerClick}
+                className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition shadow-lg group"
+              >
                 Partner With Us <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
@@ -604,6 +610,13 @@ const Footer = () => (
 );
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+
+
+  if (currentPage === 'investor') {
+    return <InvestorPage onNavigateBack={() => setCurrentPage('home')} />;
+  }
+
   return (
     <div className="min-h-screen bg-navy text-white selection:bg-sunset-skyblue selection:text-navy">
       <Navbar />
@@ -614,7 +627,7 @@ export default function App() {
       <Business />
       <Traction />
       <Team />
-      <CTASection />
+      <CTASection onPartnerClick={() => setCurrentPage('investor')} />
       <Footer />
     </div>
   );
