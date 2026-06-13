@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, Mail, Smartphone, BatteryWarning, Menu, X } from 'lucide-react';
-import { GlassCard, LiquidGlassCard, FadeIn, CursorGlow, Footer } from '../components/SharedUI';
+import { ArrowRight, Mail, Smartphone, Menu, X } from 'lucide-react';
+import { LiquidGlassCard, FadeIn, CursorGlow, Footer } from '../components/SharedUI';
 import { useNavigate } from 'react-router-dom';
 
 // import heroImg from '../assets/hero.png';

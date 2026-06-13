@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import { ChevronRight, Mail, Rocket, Cpu, Activity, Smartphone, Bell, BarChart3, HeartHandshake, CheckCircle2 } from 'lucide-react';
+import { ChevronRight, Mail, Rocket, Cpu, Activity, Bell, BarChart3 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { GlassCard, LiquidGlassCard, FadeIn, CursorGlow, Footer } from '../components/SharedUI';
+import { LiquidGlassCard, FadeIn, CursorGlow, Footer } from '../components/SharedUI';
 
 import hardwareImg from '../assets/asia/S__238305299_0.jpg';
 import appUiImg from '../assets/jason/DSC05276.JPG';
-import teamFrans from '../assets/jason/DSC05281.JPG';
-import teamDelon from '../assets/jason/DSC05310.JPG';
-import teamJason from '../assets/jason/DSC05327.JPG';
-import teamJaiJai from '../assets/jason/DSC05255.JPG';
+// import teamFrans from '../assets/jason/DSC05281.JPG';
+// import teamDelon from '../assets/jason/DSC05310.JPG';
+// import teamJason from '../assets/jason/DSC05327.JPG';
+// import teamJaiJai from '../assets/jason/DSC05255.JPG';
 import shrimpPondImg from '../assets/shrimp_pond.jpg';
 import proposalPdf from '../assets/inspo/Cultivator Project Proposal V5.pdf';
 import heroVideo from '../assets/thailand_shrimp_farm_video.mp4';
