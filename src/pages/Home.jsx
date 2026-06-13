@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, BatteryWarning, Menu, X } from 'lucide-react';
+import { ArrowRight, Mail, Smartphone, BatteryWarning, Menu, X } from 'lucide-react';
 import { GlassCard, LiquidGlassCard, FadeIn, CursorGlow, Footer } from '../components/SharedUI';
 import { useNavigate } from 'react-router-dom';
 
@@ -22,6 +22,11 @@ import gallery5 from '../assets/asia/S__238305303_0.jpg';
 import gallery6 from '../assets/jason/DSC05294.JPG';
 import gallery7 from '../assets/asia/S__238305300_0.jpg';
 import gallery8 from '../assets/jason/DSC05302.JPG';
+
+import teamFrans from '../assets/jason/DSC05281.JPG';
+import teamDelon from '../assets/jason/DSC05310.JPG';
+import teamJason from '../assets/jason/DSC05327.JPG';
+import teamJaiJai from '../assets/jason/DSC05255.JPG';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -207,6 +212,61 @@ const Solution = () => (
   </section>
 );
 
+const Team = () => (
+  <section id="team" className="relative px-4 py-20 overflow-hidden">
+    <div className="absolute inset-0 z-0">
+      <img src={hardwareImg} alt="Background" className="h-full w-full object-cover opacity-[0.03] mix-blend-luminosity" />
+    </div>
+    <div className="relative z-10 mx-auto max-w-7xl">
+      <FadeIn>
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">Meet the Innovators.</h2>
+          <p className="text-xl text-lightgrey">A focused founding team spanning product, AI, growth, and hardware design.</p>
+        </div>
+      </FadeIn>
+
+      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4 mb-12">
+        {[
+          { name: 'Frans (郭凡思)', role: 'CEO, Product Strategy', image: teamFrans },
+          { name: 'Jason (陈建豪)', role: 'COO, AI Systems & Data', image: teamJason },
+          { name: 'Delon (羊忠誠)', role: 'CMO, Marketing & Growth', image: teamDelon },
+          { name: 'Jai Jai (孫宏才)', role: 'CTO, Hardware Design', image: teamJaiJai },
+        ].map((member, index) => (
+          <FadeIn key={member.name} delay={index * 100}>
+            <div className="group relative overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-xl backdrop-blur-xl">
+              <div className="relative aspect-3/4 overflow-hidden bg-navy">
+                <img src={member.image} alt={member.name} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-linear-to-t from-navy/90 via-navy/30 to-transparent"></div>
+              </div>
+              <div className="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition-transform">
+                <h3 className="text-2xl font-bold text-white">{member.name}</h3>
+                <p className="mt-1 text-xs font-bold uppercase tracking-[0.15em] text-sunset-skyblue">{member.role}</p>
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+      
+      <FadeIn delay={400}>
+        <div className="flex flex-wrap justify-center gap-6">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+            <Mail className="w-5 h-5 text-lightgrey" />
+            <span className="text-white/90">ddieong04@gmail.com</span>
+          </div>
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+            <Smartphone className="w-5 h-5 text-lightgrey" />
+            <span className="text-white/90">+886 95380908 (Daniel)</span>
+          </div>
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+            <Smartphone className="w-5 h-5 text-lightgrey" />
+            <span className="text-white/90">+886 97072303 (Jason)</span>
+          </div>
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+);
+
 const Gallery = () => {
   const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8];
   
@@ -282,6 +342,7 @@ export default function Home() {
       <Hero />       
       <Problem />
       <Solution />
+      <Team />
       <Gallery />
       <CTASection /> 
       <Footer />

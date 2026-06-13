@@ -17,10 +17,10 @@ import sdg1Img from '../assets/sdg_1.png';
 import sdg2Img from '../assets/sdg_2.png';
 import sdg3Img from '../assets/sdg_3.png';
 
-import field1 from '../assets/asia/S__238305289_0.jpg';
-import field2 from '../assets/jason/DSC05264.JPG';
-import field3 from '../assets/asia/S__238305296_0.jpg';
-import field4 from '../assets/jason/DSC05282.JPG';
+// import field1 from '../assets/asia/S__238305289_0.jpg';
+// import field2 from '../assets/jason/DSC05264.JPG';
+// import field3 from '../assets/asia/S__238305296_0.jpg';
+// import field4 from '../assets/jason/DSC05282.JPG';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -341,45 +341,45 @@ const Market = () => {
 //   </section>
 // );
 
-const Traction = () => (
-  <section id="traction" className="px-4 py-20">
-    <div className="mx-auto max-w-7xl">
-      <FadeIn>
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">Proven Momentum.</h2>
-          <p className="text-xl text-lightgrey">We are actively validating our product with real farmers.</p>
-        </div>
-      </FadeIn>
+// const Traction = () => (
+//   <section id="traction" className="px-4 py-20">
+//     <div className="mx-auto max-w-7xl">
+//       <FadeIn>
+//         <div className="mx-auto mb-16 max-w-3xl text-center">
+//           <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">Proven Momentum.</h2>
+//           <p className="text-xl text-lightgrey">We are actively validating our product with real farmers.</p>
+//         </div>
+//       </FadeIn>
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_1fr] items-stretch">
-        <FadeIn delay={100}>
-          <GlassCard className="h-full border-l-4 border-l-sunset-skyblue flex flex-col justify-center">
-            <div className="text-5xl font-extrabold text-white mb-2">5 <span className="text-2xl font-medium text-lightgrey">farmers approached</span></div>
-            <div className="text-5xl font-extrabold text-sunset-skyblue mb-8">3 <span className="text-2xl font-medium text-lightgrey">committed to pilot</span></div>
+//       <div className="grid gap-8 lg:grid-cols-[1fr_1fr] items-stretch">
+//         <FadeIn delay={100}>
+//           <GlassCard className="h-full border-l-4 border-l-sunset-skyblue flex flex-col justify-center">
+//             <div className="text-5xl font-extrabold text-white mb-2">5 <span className="text-2xl font-medium text-lightgrey">farmers approached</span></div>
+//             <div className="text-5xl font-extrabold text-sunset-skyblue mb-8">3 <span className="text-2xl font-medium text-lightgrey">committed to pilot</span></div>
             
-            <p className="text-lg text-lightgrey leading-relaxed mb-6">
-              2 partners in Indonesia are ready to adopt as soon as our MVP is finalized. Another key partner in Taiwan is working closely with us for immediate localized testing.
-            </p>
-            <p className="text-lg text-lightgrey leading-relaxed">
-              We're also in close contact with National Taiwan Ocean University to rigorously validate our hardware assumptions.
-            </p>
-          </GlassCard>
-        </FadeIn>
+//             <p className="text-lg text-lightgrey leading-relaxed mb-6">
+//               2 partners in Indonesia are ready to adopt as soon as our MVP is finalized. Another key partner in Taiwan is working closely with us for immediate localized testing.
+//             </p>
+//             <p className="text-lg text-lightgrey leading-relaxed">
+//               We're also in close contact with National Taiwan Ocean University to rigorously validate our hardware assumptions.
+//             </p>
+//           </GlassCard>
+//         </FadeIn>
 
-        <FadeIn delay={200}>
-          <div className="grid h-full grid-cols-2 gap-4">
-            {[field1, field2, field3, field4].map((image, index) => (
-              <div key={index} className={`relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-xl ${index === 0 ? 'col-span-2 h-48' : 'h-40'}`}>
-                <img src={image} alt="Traction visual" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-110" />
-                <div className="absolute inset-0 bg-linear-to-t from-navy/65 via-transparent to-transparent"></div>
-              </div>
-            ))}
-          </div>
-        </FadeIn>
-      </div>
-    </div>
-  </section>
-);
+//         <FadeIn delay={200}>
+//           <div className="grid h-full grid-cols-2 gap-4">
+//             {[field1, field2, field3, field4].map((image, index) => (
+//               <div key={index} className={`relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-xl ${index === 0 ? 'col-span-2 h-48' : 'h-40'}`}>
+//                 <img src={image} alt="Traction visual" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-110" />
+//                 <div className="absolute inset-0 bg-linear-to-t from-navy/65 via-transparent to-transparent"></div>
+//               </div>
+//             ))}
+//           </div>
+//         </FadeIn>
+//       </div>
+//     </div>
+//   </section>
+// );
 
 const Roadmap = () => {
   const [activeTab, setActiveTab] = useState('3months');
@@ -536,143 +536,143 @@ const Roadmap = () => {
 //   );
 // };
 
-const SponsorshipTiers = () => (
-  <section id="sponsorship" className="px-4 py-20 border-t border-white/5 bg-navy/40">
-    <div className="mx-auto max-w-7xl">
-      <FadeIn>
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">Become a Partner.</h2>
-          <p className="text-xl text-lightgrey">Your support directly accelerates prototype development, pilot deployment, and real-world validation across Asia.</p>
-        </div>
-      </FadeIn>
+// const SponsorshipTiers = () => (
+//   <section id="sponsorship" className="px-4 py-20 border-t border-white/5 bg-navy/40">
+//     <div className="mx-auto max-w-7xl">
+//       <FadeIn>
+//         <div className="mx-auto mb-16 max-w-3xl text-center">
+//           <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">Become a Partner.</h2>
+//           <p className="text-xl text-lightgrey">Your support directly accelerates prototype development, pilot deployment, and real-world validation across Asia.</p>
+//         </div>
+//       </FadeIn>
 
-      <div className="grid gap-8 lg:grid-cols-2 mb-16">
-        <FadeIn delay={100}>
-          <div className="h-full rounded-4xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl relative overflow-hidden group hover:border-white/20 transition-all">
-            <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-lightgrey to-white/20"></div>
-            <div className="mb-6">
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 font-bold text-xl text-white mb-4">1</span>
-              <h3 className="text-3xl font-bold text-white mb-2">Supporting Partner</h3>
-              <p className="text-2xl font-bold text-lightgrey">10,000 ~ 30,000 NTD</p>
-            </div>
-            <div className="space-y-4">
-              {[
-                "Logo prominently on our website",
-                "Logo on selected pitch materials",
-                "Mention in social media posts",
-                "Acknowledgment in our sponsor page",
-                "Short impact report after pilot testing"
-              ].map((benefit, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-lightgrey shrink-0" />
-                  <span className="text-white/80">{benefit}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </FadeIn>
+//       <div className="grid gap-8 lg:grid-cols-2 mb-16">
+//         <FadeIn delay={100}>
+//           <div className="h-full rounded-4xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl relative overflow-hidden group hover:border-white/20 transition-all">
+//             <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-lightgrey to-white/20"></div>
+//             <div className="mb-6">
+//               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 font-bold text-xl text-white mb-4">1</span>
+//               <h3 className="text-3xl font-bold text-white mb-2">Supporting Partner</h3>
+//               <p className="text-2xl font-bold text-lightgrey">10,000 ~ 30,000 NTD</p>
+//             </div>
+//             <div className="space-y-4">
+//               {[
+//                 "Logo prominently on our website",
+//                 "Logo on selected pitch materials",
+//                 "Mention in social media posts",
+//                 "Acknowledgment in our sponsor page",
+//                 "Short impact report after pilot testing"
+//               ].map((benefit, i) => (
+//                 <div key={i} className="flex items-start gap-3">
+//                   <CheckCircle2 className="w-6 h-6 text-lightgrey shrink-0" />
+//                   <span className="text-white/80">{benefit}</span>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         </FadeIn>
 
-        <FadeIn delay={200}>
-          <div className="h-full rounded-4xl border border-sunset-skyblue/30 bg-sunset-skyblue/5 p-8 shadow-[0_0_30px_rgba(85,212,255,0.1)] backdrop-blur-xl relative overflow-hidden group hover:border-sunset-skyblue/50 transition-all">
-            <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-sunset-skyblue to-sunset-orange"></div>
-            <div className="absolute -right-10 -top-10 w-40 h-40 bg-sunset-skyblue/20 rounded-full blur-3xl transition-transform group-hover:scale-125"></div>
-            <div className="mb-6 relative z-10">
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-sunset-skyblue text-navy font-bold text-xl mb-4 shadow-[0_0_15px_rgba(85,212,255,0.5)]">2</span>
-              <h3 className="text-3xl font-bold text-white mb-2">Technical Partner</h3>
-              <p className="text-2xl font-bold text-sunset-skyblue">30,000 ~ 70,000 NTD</p>
-            </div>
-            <div className="space-y-4 relative z-10">
-              {[
-                "All Supporting Partner benefits",
-                "Dedicated sponsor feature post",
-                "Mention in media & competition presentations",
-                "Exclusive prototype demo session",
-                "Detailed pilot progress report",
-                "Listed as a strategic supporter for future collaboration"
-              ].map((benefit, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-sunset-skyblue shrink-0" />
-                  <span className="text-white/90">{benefit}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </FadeIn>
-      </div>
+//         <FadeIn delay={200}>
+//           <div className="h-full rounded-4xl border border-sunset-skyblue/30 bg-sunset-skyblue/5 p-8 shadow-[0_0_30px_rgba(85,212,255,0.1)] backdrop-blur-xl relative overflow-hidden group hover:border-sunset-skyblue/50 transition-all">
+//             <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-sunset-skyblue to-sunset-orange"></div>
+//             <div className="absolute -right-10 -top-10 w-40 h-40 bg-sunset-skyblue/20 rounded-full blur-3xl transition-transform group-hover:scale-125"></div>
+//             <div className="mb-6 relative z-10">
+//               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-sunset-skyblue text-navy font-bold text-xl mb-4 shadow-[0_0_15px_rgba(85,212,255,0.5)]">2</span>
+//               <h3 className="text-3xl font-bold text-white mb-2">Technical Partner</h3>
+//               <p className="text-2xl font-bold text-sunset-skyblue">30,000 ~ 70,000 NTD</p>
+//             </div>
+//             <div className="space-y-4 relative z-10">
+//               {[
+//                 "All Supporting Partner benefits",
+//                 "Dedicated sponsor feature post",
+//                 "Mention in media & competition presentations",
+//                 "Exclusive prototype demo session",
+//                 "Detailed pilot progress report",
+//                 "Listed as a strategic supporter for future collaboration"
+//               ].map((benefit, i) => (
+//                 <div key={i} className="flex items-start gap-3">
+//                   <CheckCircle2 className="w-6 h-6 text-sunset-skyblue shrink-0" />
+//                   <span className="text-white/90">{benefit}</span>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         </FadeIn>
+//       </div>
 
-      <FadeIn delay={300}>
-        <div className="rounded-4xl border border-dashed border-white/20 bg-white/5 p-8 backdrop-blur-xl text-center hover:bg-white/10 transition-colors">
-          <HeartHandshake className="w-12 h-12 text-rose-400 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-white mb-6">What Sponsors Can Offer</h3>
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <span className="bg-white/10 border border-white/20 px-6 py-3 rounded-full text-white font-medium hover:bg-white/20 hover:scale-105 transition-all">Hardware Support</span>
-            <span className="bg-white/10 border border-white/20 px-6 py-3 rounded-full text-white font-medium hover:bg-white/20 hover:scale-105 transition-all">Manufacturing Support</span>
-            <span className="bg-white/10 border border-white/20 px-6 py-3 rounded-full text-white font-medium hover:bg-white/20 hover:scale-105 transition-all">Farm or Industry Access</span>
-            <span className="bg-white/10 border border-white/20 px-6 py-3 rounded-full text-white font-medium hover:bg-white/20 hover:scale-105 transition-all">Branding and Media Support</span>
-          </div>
-          <p className="text-lightgrey max-w-3xl mx-auto italic text-lg leading-relaxed">
-            "This sponsorship is not just supporting a student team. It is helping validate a real technology for aquaculture farmers in Taiwan and Southeast Asia."
-          </p>
-        </div>
-      </FadeIn>
-    </div>
-  </section>
-);
+//       <FadeIn delay={300}>
+//         <div className="rounded-4xl border border-dashed border-white/20 bg-white/5 p-8 backdrop-blur-xl text-center hover:bg-white/10 transition-colors">
+//           <HeartHandshake className="w-12 h-12 text-rose-400 mx-auto mb-4" />
+//           <h3 className="text-2xl font-bold text-white mb-6">What Sponsors Can Offer</h3>
+//           <div className="flex flex-wrap justify-center gap-4 mb-8">
+//             <span className="bg-white/10 border border-white/20 px-6 py-3 rounded-full text-white font-medium hover:bg-white/20 hover:scale-105 transition-all">Hardware Support</span>
+//             <span className="bg-white/10 border border-white/20 px-6 py-3 rounded-full text-white font-medium hover:bg-white/20 hover:scale-105 transition-all">Manufacturing Support</span>
+//             <span className="bg-white/10 border border-white/20 px-6 py-3 rounded-full text-white font-medium hover:bg-white/20 hover:scale-105 transition-all">Farm or Industry Access</span>
+//             <span className="bg-white/10 border border-white/20 px-6 py-3 rounded-full text-white font-medium hover:bg-white/20 hover:scale-105 transition-all">Branding and Media Support</span>
+//           </div>
+//           <p className="text-lightgrey max-w-3xl mx-auto italic text-lg leading-relaxed">
+//             "This sponsorship is not just supporting a student team. It is helping validate a real technology for aquaculture farmers in Taiwan and Southeast Asia."
+//           </p>
+//         </div>
+//       </FadeIn>
+//     </div>
+//   </section>
+// );
 
-const Team = () => (
-  <section id="team" className="relative px-4 py-20 overflow-hidden">
-    <div className="absolute inset-0 z-0">
-      <img src={hardwareImg} alt="Background" className="h-full w-full object-cover opacity-[0.03] mix-blend-luminosity" />
-    </div>
-    <div className="relative z-10 mx-auto max-w-7xl">
-      <FadeIn>
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">Meet the Innovators.</h2>
-          <p className="text-xl text-lightgrey">A focused founding team spanning product, AI, growth, and hardware design.</p>
-        </div>
-      </FadeIn>
+// const Team = () => (
+//   <section id="team" className="relative px-4 py-20 overflow-hidden">
+//     <div className="absolute inset-0 z-0">
+//       <img src={hardwareImg} alt="Background" className="h-full w-full object-cover opacity-[0.03] mix-blend-luminosity" />
+//     </div>
+//     <div className="relative z-10 mx-auto max-w-7xl">
+//       <FadeIn>
+//         <div className="mx-auto mb-16 max-w-3xl text-center">
+//           <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">Meet the Innovators.</h2>
+//           <p className="text-xl text-lightgrey">A focused founding team spanning product, AI, growth, and hardware design.</p>
+//         </div>
+//       </FadeIn>
 
-      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4 mb-12">
-        {[
-          { name: 'Frans (郭凡思)', role: 'CEO, Product Strategy', image: teamFrans },
-          { name: 'Jason (陈建豪)', role: 'COO, AI Systems & Data', image: teamJason },
-          { name: 'Delon (羊忠誠)', role: 'CMO, Marketing & Growth', image: teamDelon },
-          { name: 'Jai Jai (孫宏才)', role: 'CTO, Hardware Design', image: teamJaiJai },
-        ].map((member, index) => (
-          <FadeIn key={member.name} delay={index * 100}>
-            <div className="group relative overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-xl backdrop-blur-xl">
-              <div className="relative aspect-3/4 overflow-hidden bg-navy">
-                <img src={member.image} alt={member.name} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-linear-to-t from-navy/90 via-navy/30 to-transparent"></div>
-              </div>
-              <div className="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition-transform">
-                <h3 className="text-2xl font-bold text-white">{member.name}</h3>
-                <p className="mt-1 text-xs font-bold uppercase tracking-[0.15em] text-sunset-skyblue">{member.role}</p>
-              </div>
-            </div>
-          </FadeIn>
-        ))}
-      </div>
+//       <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4 mb-12">
+//         {[
+//           { name: 'Frans (郭凡思)', role: 'CEO, Product Strategy', image: teamFrans },
+//           { name: 'Jason (陈建豪)', role: 'COO, AI Systems & Data', image: teamJason },
+//           { name: 'Delon (羊忠誠)', role: 'CMO, Marketing & Growth', image: teamDelon },
+//           { name: 'Jai Jai (孫宏才)', role: 'CTO, Hardware Design', image: teamJaiJai },
+//         ].map((member, index) => (
+//           <FadeIn key={member.name} delay={index * 100}>
+//             <div className="group relative overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-xl backdrop-blur-xl">
+//               <div className="relative aspect-3/4 overflow-hidden bg-navy">
+//                 <img src={member.image} alt={member.name} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+//                 <div className="absolute inset-0 bg-linear-to-t from-navy/90 via-navy/30 to-transparent"></div>
+//               </div>
+//               <div className="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition-transform">
+//                 <h3 className="text-2xl font-bold text-white">{member.name}</h3>
+//                 <p className="mt-1 text-xs font-bold uppercase tracking-[0.15em] text-sunset-skyblue">{member.role}</p>
+//               </div>
+//             </div>
+//           </FadeIn>
+//         ))}
+//       </div>
       
-      <FadeIn delay={400}>
-        <div className="flex flex-wrap justify-center gap-6">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <Mail className="w-5 h-5 text-lightgrey" />
-            <span className="text-white/90">ddieong04@gmail.com</span>
-          </div>
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <Smartphone className="w-5 h-5 text-lightgrey" />
-            <span className="text-white/90">+886 95380908 (Daniel)</span>
-          </div>
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <Smartphone className="w-5 h-5 text-lightgrey" />
-            <span className="text-white/90">+886 97072303 (Jason)</span>
-          </div>
-        </div>
-      </FadeIn>
-    </div>
-  </section>
-);
+//       <FadeIn delay={400}>
+//         <div className="flex flex-wrap justify-center gap-6">
+//           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+//             <Mail className="w-5 h-5 text-lightgrey" />
+//             <span className="text-white/90">ddieong04@gmail.com</span>
+//           </div>
+//           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+//             <Smartphone className="w-5 h-5 text-lightgrey" />
+//             <span className="text-white/90">+886 95380908 (Daniel)</span>
+//           </div>
+//           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+//             <Smartphone className="w-5 h-5 text-lightgrey" />
+//             <span className="text-white/90">+886 97072303 (Jason)</span>
+//           </div>
+//         </div>
+//       </FadeIn>
+//     </div>
+//   </section>
+// );
 
 const SDGImpact = () => (
   <section id="sdg" className="px-4 py-20 bg-navy/40 relative overflow-hidden border-t border-white/5">
@@ -741,10 +741,10 @@ export default function InvestorPage() {
       <Hero />
       <AeroTrustSolution />
       <Market />
-      <Traction />
+      {/* <Traction /> */}
       <Roadmap />
-      <SponsorshipTiers />
-      <Team />
+      {/* <SponsorshipTiers /> */}
+      {/* <Team /> */}
       <SDGImpact />
       <FinalCTA />
       <Footer />
