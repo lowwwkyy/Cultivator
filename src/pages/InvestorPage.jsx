@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Award, ChevronRight, Globe, Handshake, Mail, MapPin, Rocket, ShieldCheck, Target, Users, Cpu, Activity, Smartphone, Bell, BarChart3, Trophy, Medal, Wrench, HeartHandshake, CheckCircle2 } from 'lucide-react';
+import { ChevronRight, Mail, Rocket, Cpu, Activity, Smartphone, Bell, BarChart3, HeartHandshake, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { GlassCard, LiquidGlassCard, FadeIn, CursorGlow, Footer } from '../components/SharedUI';
 
@@ -130,7 +130,7 @@ const Hero = () => {
           </div>
           <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:justify-center">
             <a href="#sponsorship" className="inline-flex items-center justify-center gap-2 rounded-full bg-sunset-orange px-8 py-4 text-lg font-bold text-white shadow-[0_0_20px_rgba(255,145,16,0.6),0_4px_15px_rgba(0,0,0,0.5)] transition hover:-translate-y-1 hover:bg-sunset-orange/90">
-              View Sponsorship Tiers <ChevronRight className="h-5 w-5" />
+              Contact Us <ChevronRight className="h-5 w-5" />
             </a>
             <button onClick={() => navigate('/')} className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-lg font-bold text-white transition hover:-translate-y-1 hover:bg-white/10">
               Return Home
@@ -297,49 +297,49 @@ const Market = () => {
   );
 };
 
-const Competitions = () => (
-  <section id="competitions" className="px-4 py-20 bg-navy/60 border-y border-tealblue/20 relative">
-    <div className="absolute inset-0 pointer-events-none opacity-5"></div>
-    <div className="mx-auto max-w-7xl relative z-10">
-      <FadeIn>
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">Recognized Excellence.</h2>
-          <p className="text-xl text-lightgrey">Our project is judged not only as a technical idea, but as a business that can create profound social and economic impact.</p>
-        </div>
-      </FadeIn>
+// const Competitions = () => (
+//   <section id="competitions" className="px-4 py-20 bg-navy/60 border-y border-tealblue/20 relative">
+//     <div className="absolute inset-0 pointer-events-none opacity-5"></div>
+//     <div className="mx-auto max-w-7xl relative z-10">
+//       <FadeIn>
+//         <div className="mx-auto mb-16 max-w-3xl text-center">
+//           <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">Recognized Excellence.</h2>
+//           <p className="text-xl text-lightgrey">Our project is judged not only as a technical idea, but as a business that can create profound social and economic impact.</p>
+//         </div>
+//       </FadeIn>
 
-      <div className="grid gap-8 md:grid-cols-2">
-        <FadeIn delay={100}>
-          <div className="group relative rounded-4xl border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-xl overflow-hidden hover:bg-white/10 transition-colors duration-500 h-full">
-            <div className="absolute -right-10 -top-10 bg-rose-500/20 blur-3xl w-40 h-40 rounded-full transition-transform group-hover:scale-150"></div>
-            <Trophy className="w-12 h-12 text-rose-400 mb-6 relative z-10" />
-            <h3 className="text-3xl font-bold text-white mb-4 relative z-10">Hult Prize Nationals Winner</h3>
-            <p className="text-lg text-lightgrey leading-relaxed mb-6 relative z-10">
-              We won the national stage of the world's premier social entrepreneurship competition and are now entering the prestigious Digital Incubator.
-            </p>
-            <div className="inline-flex rounded-full bg-rose-500/20 px-4 py-2 text-sm font-bold text-rose-300 relative z-10">
-              Entering Digital Incubator
-            </div>
-          </div>
-        </FadeIn>
+//       <div className="grid gap-8 md:grid-cols-2">
+//         <FadeIn delay={100}>
+//           <div className="group relative rounded-4xl border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-xl overflow-hidden hover:bg-white/10 transition-colors duration-500 h-full">
+//             <div className="absolute -right-10 -top-10 bg-rose-500/20 blur-3xl w-40 h-40 rounded-full transition-transform group-hover:scale-150"></div>
+//             <Trophy className="w-12 h-12 text-rose-400 mb-6 relative z-10" />
+//             <h3 className="text-3xl font-bold text-white mb-4 relative z-10">Hult Prize Nationals Winner</h3>
+//             <p className="text-lg text-lightgrey leading-relaxed mb-6 relative z-10">
+//               We won the national stage of the world's premier social entrepreneurship competition and are now entering the prestigious Digital Incubator.
+//             </p>
+//             <div className="inline-flex rounded-full bg-rose-500/20 px-4 py-2 text-sm font-bold text-rose-300 relative z-10">
+//               Entering Digital Incubator
+//             </div>
+//           </div>
+//         </FadeIn>
 
-        <FadeIn delay={200}>
-          <div className="group relative rounded-4xl border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-xl overflow-hidden hover:bg-white/10 transition-colors duration-500 h-full">
-            <div className="absolute -right-10 -bottom-10 bg-sunset-skyblue/20 blur-3xl w-40 h-40 rounded-full transition-transform group-hover:scale-150"></div>
-            <Medal className="w-12 h-12 text-sunset-skyblue mb-6 relative z-10" />
-            <h3 className="text-3xl font-bold text-white mb-4 relative z-10">Startup World Cup Hsinchu</h3>
-            <p className="text-lg text-lightgrey leading-relaxed mb-6 relative z-10">
-              Competing against research teams and early-stage startups, giving us exposure to top-tier investors, mentors, and industry partners.
-            </p>
-            <div className="inline-flex rounded-full bg-sunset-skyblue/20 px-4 py-2 text-sm font-bold text-sunset-skyblue relative z-10">
-              Supported by NTHU Garage
-            </div>
-          </div>
-        </FadeIn>
-      </div>
-    </div>
-  </section>
-);
+//         <FadeIn delay={200}>
+//           <div className="group relative rounded-4xl border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-xl overflow-hidden hover:bg-white/10 transition-colors duration-500 h-full">
+//             <div className="absolute -right-10 -bottom-10 bg-sunset-skyblue/20 blur-3xl w-40 h-40 rounded-full transition-transform group-hover:scale-150"></div>
+//             <Medal className="w-12 h-12 text-sunset-skyblue mb-6 relative z-10" />
+//             <h3 className="text-3xl font-bold text-white mb-4 relative z-10">Startup World Cup Hsinchu</h3>
+//             <p className="text-lg text-lightgrey leading-relaxed mb-6 relative z-10">
+//               Competing against research teams and early-stage startups, giving us exposure to top-tier investors, mentors, and industry partners.
+//             </p>
+//             <div className="inline-flex rounded-full bg-sunset-skyblue/20 px-4 py-2 text-sm font-bold text-sunset-skyblue relative z-10">
+//               Supported by NTHU Garage
+//             </div>
+//           </div>
+//         </FadeIn>
+//       </div>
+//     </div>
+//   </section>
+// );
 
 const Traction = () => (
   <section id="traction" className="px-4 py-20">
@@ -463,100 +463,78 @@ const Roadmap = () => {
   );
 };
 
-const FundingAndEquipment = () => {
-  const [showEquipment, setShowEquipment] = useState(false);
+// const FundingAndEquipment = () => {
+//   const [showEquipment, setShowEquipment] = useState(false);
 
-  const equipmentList = [
-    { name: "Current sensors", purpose: "To monitor electrical behavior of the aerator" },
-    { name: "Vibration sensors", purpose: "To detect abnormal machine movement" },
-    { name: "Microcontroller / IoT board", purpose: "To collect and send data" },
-    { name: "Waterproof casing", purpose: "To protect the device in farm conditions" },
-    { name: "Cables and connectors", purpose: "To safely attach the device" },
-    { name: "Communication module", purpose: "To send alerts from the farm" },
-    { name: "Power supply / battery", purpose: "To keep the device running" },
-    { name: "Testing tools", purpose: "To validate safety, signal quality, etc." },
-    { name: "Prototype manufacturing", purpose: "To build multiple pilot units" },
-    { name: "Farm installation materials", purpose: "To deploy devices in real ponds" },
-  ];
+//   const equipmentList = [
+//     { name: "Current sensors", purpose: "To monitor electrical behavior of the aerator" },
+//     { name: "Vibration sensors", purpose: "To detect abnormal machine movement" },
+//     { name: "Microcontroller / IoT board", purpose: "To collect and send data" },
+//     { name: "Waterproof casing", purpose: "To protect the device in farm conditions" },
+//     { name: "Cables and connectors", purpose: "To safely attach the device" },
+//     { name: "Communication module", purpose: "To send alerts from the farm" },
+//     { name: "Power supply / battery", purpose: "To keep the device running" },
+//     { name: "Testing tools", purpose: "To validate safety, signal quality, etc." },
+//     { name: "Prototype manufacturing", purpose: "To build multiple pilot units" },
+//     { name: "Farm installation materials", purpose: "To deploy devices in real ponds" },
+//   ];
 
-  return (
-    <section id="funding" className="px-4 py-20 relative">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid items-start gap-12 lg:grid-cols-2">
-          <FadeIn className="space-y-8">
-            <h2 className="text-3xl font-bold text-white md:text-5xl">Funding Allocation.</h2>
-            <p className="text-xl leading-relaxed text-lightgrey">We are raising 300,000 NTD to transition from a functional prototype to a real-world pilot deployment in harsh aquaculture environments.</p>
+//   return (
+//     <section id="funding" className="px-4 py-20 relative">
+//       <div className="mx-auto max-w-7xl">
+//         <div className="grid items-start gap-12 lg:grid-cols-2">
+          
 
-            <div className="rounded-4xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl shadow-xl relative overflow-hidden">
-              <div className="absolute right-0 top-0 w-32 h-32 bg-sunset-orange/20 rounded-bl-full blur-2xl"></div>
-              <div className="mb-3 text-sm font-bold uppercase tracking-[0.24em] text-white/60">Funding Goal</div>
-              <div className="text-5xl font-extrabold tracking-tight text-white md:text-6xl mb-6">300,000 NTD</div>
-              
-              <div className="w-full h-4 rounded-full bg-white/10 overflow-hidden flex mb-2">
-                <div className="h-full bg-sunset-skyblue transition-all duration-1000 delay-300" style={{ width: '43.3%' }}></div>
-                <div className="h-full bg-amber-400 transition-all duration-1000 delay-500" style={{ width: '30%' }}></div>
-                <div className="h-full bg-rose-400 transition-all duration-1000 delay-700" style={{ width: '13.3%' }}></div>
-                <div className="h-full bg-purple-400 transition-all duration-1000 delay-1000" style={{ width: '13.3%' }}></div>
-              </div>
-              <div className="flex flex-wrap gap-4 text-sm mt-4">
-                <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-sunset-skyblue"></span> Hardware (43%)</div>
-                <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-amber-400"></span> Pilot (30%)</div>
-                <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-rose-400"></span> Cloud (13%)</div>
-                <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-purple-400"></span> Outreach (13%)</div>
-              </div>
-            </div>
-          </FadeIn>
+//           <FadeIn delay={150}>
+//             <div className="bg-white/5 rounded-3xl border border-white/10 p-2 backdrop-blur-md mb-6 inline-flex w-full sm:w-auto">
+//               <button 
+//                 onClick={() => setShowEquipment(false)}
+//                 className={`flex-1 sm:flex-none px-6 py-2 rounded-2xl text-sm font-bold transition-all ${!showEquipment ? 'bg-white/10 text-white' : 'text-white/50 hover:text-white'}`}
+//               >
+//                 Allocation Details
+//               </button>
+//               <button 
+//                 onClick={() => setShowEquipment(true)}
+//                 className={`flex-1 sm:flex-none px-6 py-2 rounded-2xl text-sm font-bold transition-all ${showEquipment ? 'bg-white/10 text-white' : 'text-white/50 hover:text-white'}`}
+//               >
+//                 Equipment Needed
+//               </button>
+//             </div>
 
-          <FadeIn delay={150}>
-            <div className="bg-white/5 rounded-3xl border border-white/10 p-2 backdrop-blur-md mb-6 inline-flex w-full sm:w-auto">
-              <button 
-                onClick={() => setShowEquipment(false)}
-                className={`flex-1 sm:flex-none px-6 py-2 rounded-2xl text-sm font-bold transition-all ${!showEquipment ? 'bg-white/10 text-white' : 'text-white/50 hover:text-white'}`}
-              >
-                Allocation Details
-              </button>
-              <button 
-                onClick={() => setShowEquipment(true)}
-                className={`flex-1 sm:flex-none px-6 py-2 rounded-2xl text-sm font-bold transition-all ${showEquipment ? 'bg-white/10 text-white' : 'text-white/50 hover:text-white'}`}
-              >
-                Equipment Needed
-              </button>
-            </div>
+//             <div className="relative min-h-[350px]">
+//               <div className={`absolute inset-0 space-y-4 transition-all duration-300 ${!showEquipment ? 'opacity-100 translate-x-0 z-10' : 'opacity-0 translate-x-8 pointer-events-none'}`}>
+//                 {[
+//                   { label: 'Hardware Prototyping & Sensor Integration', value: '130,000 NTD', icon: <Cpu className="h-5 w-5" />, color: 'text-sunset-skyblue', bg: 'bg-sunset-skyblue/15' },
+//                   { label: 'Pilot Deployment & Field Validation', value: '90,000 NTD', icon: <MapPin className="h-5 w-5" />, color: 'text-amber-400', bg: 'bg-amber-400/15' },
+//                   { label: 'Cloud Infrastructure & Software System', value: '40,000 NTD', icon: <Globe className="h-5 w-5" />, color: 'text-rose-400', bg: 'bg-rose-400/15' },
+//                   { label: 'Outreach & Partnership Development', value: '40,000 NTD', icon: <Handshake className="h-5 w-5" />, color: 'text-purple-400', bg: 'bg-purple-400/15' },
+//                 ].map((item) => (
+//                   <div key={item.label} className="flex items-center justify-between gap-4 rounded-3xl border border-white/10 bg-white/5 px-5 py-4 backdrop-blur-xl hover:bg-white/10 transition-colors">
+//                     <div className="flex items-center gap-3">
+//                       <div className={`inline-flex rounded-2xl ${item.bg} p-3 ${item.color}`}>{item.icon}</div>
+//                       <span className="text-base font-medium text-white">{item.label}</span>
+//                     </div>
+//                     <span className={`text-lg font-bold ${item.color}`}>{item.value}</span>
+//                   </div>
+//                 ))}
+//               </div>
 
-            <div className="relative min-h-[350px]">
-              <div className={`absolute inset-0 space-y-4 transition-all duration-300 ${!showEquipment ? 'opacity-100 translate-x-0 z-10' : 'opacity-0 translate-x-8 pointer-events-none'}`}>
-                {[
-                  { label: 'Hardware Prototyping & Sensor Integration', value: '130,000 NTD', icon: <Cpu className="h-5 w-5" />, color: 'text-sunset-skyblue', bg: 'bg-sunset-skyblue/15' },
-                  { label: 'Pilot Deployment & Field Validation', value: '90,000 NTD', icon: <MapPin className="h-5 w-5" />, color: 'text-amber-400', bg: 'bg-amber-400/15' },
-                  { label: 'Cloud Infrastructure & Software System', value: '40,000 NTD', icon: <Globe className="h-5 w-5" />, color: 'text-rose-400', bg: 'bg-rose-400/15' },
-                  { label: 'Outreach & Partnership Development', value: '40,000 NTD', icon: <Handshake className="h-5 w-5" />, color: 'text-purple-400', bg: 'bg-purple-400/15' },
-                ].map((item) => (
-                  <div key={item.label} className="flex items-center justify-between gap-4 rounded-3xl border border-white/10 bg-white/5 px-5 py-4 backdrop-blur-xl hover:bg-white/10 transition-colors">
-                    <div className="flex items-center gap-3">
-                      <div className={`inline-flex rounded-2xl ${item.bg} p-3 ${item.color}`}>{item.icon}</div>
-                      <span className="text-base font-medium text-white">{item.label}</span>
-                    </div>
-                    <span className={`text-lg font-bold ${item.color}`}>{item.value}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className={`absolute inset-0 grid grid-cols-2 gap-3 transition-all duration-300 ${showEquipment ? 'opacity-100 translate-x-0 z-10' : 'opacity-0 -translate-x-8 pointer-events-none'}`}>
-                {equipmentList.map((eq, i) => (
-                  <div key={i} className="group relative rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition-colors overflow-hidden">
-                    <Wrench className="w-6 h-6 text-white/20 absolute right-4 top-4 group-hover:text-sunset-skyblue transition-colors" />
-                    <h4 className="font-bold text-white mb-1 pr-6 leading-tight">{eq.name}</h4>
-                    <p className="text-xs text-lightgrey">{eq.purpose}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </div>
-    </section>
-  );
-};
+//               <div className={`absolute inset-0 grid grid-cols-2 gap-3 transition-all duration-300 ${showEquipment ? 'opacity-100 translate-x-0 z-10' : 'opacity-0 -translate-x-8 pointer-events-none'}`}>
+//                 {equipmentList.map((eq, i) => (
+//                   <div key={i} className="group relative rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition-colors overflow-hidden">
+//                     <Wrench className="w-6 h-6 text-white/20 absolute right-4 top-4 group-hover:text-sunset-skyblue transition-colors" />
+//                     <h4 className="font-bold text-white mb-1 pr-6 leading-tight">{eq.name}</h4>
+//                     <p className="text-xs text-lightgrey">{eq.purpose}</p>
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+//           </FadeIn>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 const SponsorshipTiers = () => (
   <section id="sponsorship" className="px-4 py-20 border-t border-white/5 bg-navy/40">
@@ -720,7 +698,7 @@ const SDGImpact = () => (
 );
 
 const FinalCTA = () => {
-  const navigate = useNavigate();
+  
   return (
     <section id="contact" className="relative overflow-hidden border-t border-tealblue/30 px-4 py-20 md:py-24">
       <div className="absolute inset-0 z-0">
@@ -763,10 +741,8 @@ export default function InvestorPage() {
       <Hero />
       <AeroTrustSolution />
       <Market />
-      <Competitions />
       <Traction />
       <Roadmap />
-      <FundingAndEquipment />
       <SponsorshipTiers />
       <Team />
       <SDGImpact />
