@@ -3,11 +3,11 @@ import { ArrowRight, Mail, Smartphone, Menu, X } from 'lucide-react';
 import { LiquidGlassCard, FadeIn, CursorGlow, Footer } from '../components/SharedUI';
 import { useNavigate } from 'react-router-dom';
 
-// import heroImg from '../assets/hero.png';
+import heroImg from '../assets/hero.png';
 import hardwareImg from '../assets/asia/S__238305299_0.jpg';
 import appUiImg from '../assets/jason/DSC05276.JPG';
-import shrimpPondImg from '../assets/shrimp_pond.jpg';
 import heroVideo from '../assets/thailand_shrimp_farm_video.mp4';
+import { ContactSection } from '../components/ContactSection';
 import logoImg from '../assets/cultivator_logo.jpeg';
 
 import problemSilentFailImg from '../assets/problem_silent_fail.png';
@@ -17,11 +17,11 @@ import problemFragileOpsImg from '../assets/problem_fragile_ops.png';
 import gallery1 from '../assets/asia/S__238305288_0.jpg';
 import gallery2 from '../assets/jason/DSC05256.JPG';
 import gallery3 from '../assets/asia/S__238305295_0.jpg';
-import gallery4 from '../assets/jason/DSC05272.JPG';
-import gallery5 from '../assets/asia/S__238305303_0.jpg';
-import gallery6 from '../assets/jason/DSC05294.JPG';
-import gallery7 from '../assets/asia/S__238305300_0.jpg';
-import gallery8 from '../assets/jason/DSC05302.JPG';
+import webImg1 from '../assets/web_img1.jpg';
+import webImg2 from '../assets/web_img2.jpg';
+import webImg3 from '../assets/web_img3.HEIC';
+import webImg4 from '../assets/web_img4.jpeg';
+import webImg5 from '../assets/web_img5.jpeg';
 
 import teamFrans from '../assets/jason/DSC05281.JPG';
 import teamDelon from '../assets/jason/DSC05310.JPG';
@@ -60,7 +60,7 @@ const Navbar = () => {
               <img src={logoImg} alt="Cultivator Logo" className="h-7 w-7 rounded-full object-cover" />
               Cultivator
             </span>
-            <button onClick={() => setIsOpen((value) => !value)} className="ml-4 text-white transition hover:text-sunset-skyblue">
+            <button onClick={() => setIsOpen((value) => !value)} className="ml-4 text-white transition hover:text-sunset-orange">
               {isOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
             </button>
           </div>
@@ -98,7 +98,7 @@ const Hero = () => {
           <div className="space-y-6">
             <h1 className="text-5xl font-extrabold leading-tight tracking-tight text-white md:text-6xl lg:text-7xl" style={{ textShadow: '0 4px 30px rgba(0,0,0,0.6)' }}>
               Future of <br className="hidden md:block" />
-              <span className="text-sunset-skyblue">Shrimp Farm.</span>
+              <span className="text-sunset-orange">Shrimp Farm.</span>
             </h1>
             <p className="mx-auto max-w-3xl text-xl font-medium leading-relaxed text-white/85 md:text-2xl">
               Partner with Cultivator to support next-generation smart aquaculture technology.
@@ -132,34 +132,31 @@ const Problem = () => (
       <div className="grid gap-6 md:grid-cols-3">
         <FadeIn delay={100} className="h-full">
           <div className="relative h-full min-h-[380px] rounded-4xl overflow-hidden group animate-float [animation-delay:0s] shadow-2xl border border-white/10">
-            <img src={problemSilentFailImg} alt="Failures go undetected" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-navy/70 transition-colors duration-500 group-hover:bg-navy/50 backdrop-blur-[2px]"></div>
-            <div className="absolute inset-0 bg-linear-to-t from-navy/95 via-navy/40 to-transparent"></div>
-            <div className="relative z-10 flex flex-col justify-end h-full p-8">
+            <img src={gallery1} alt="Failures go undetected" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div className="absolute bottom-0 left-0 w-full h-2/3 bg-linear-to-t from-navy/95 via-navy/70 to-transparent"></div>
+            <div className="relative z-10 flex flex-col justify-end h-full p-8 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               <h3 className="mb-3 text-2xl font-bold text-white group-hover:text-rose-400 transition-colors">Failures go undetected</h3>
-              <p className="text-white/80 leading-relaxed">Aerator Failures are often caught too late, resulting in immediate effect of the shrimps stress level and immune system.</p>
+              <p className="text-white/90 leading-relaxed font-medium">Aerator Failures are often caught too late, resulting in immediate effect of the shrimps stress level and immune system.</p>
             </div>
           </div>
         </FadeIn>
         <FadeIn delay={200} className="h-full">
           <div className="relative h-full min-h-[380px] rounded-4xl overflow-hidden group animate-float [animation-delay:1s] shadow-2xl border border-white/10">
-            <img src={problemFragileOpsImg} alt="Electricity Cost Too High!" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-navy/70 transition-colors duration-500 group-hover:bg-navy/50 backdrop-blur-[2px]"></div>
-            <div className="absolute inset-0 bg-linear-to-t from-navy/95 via-navy/40 to-transparent"></div>
-            <div className="relative z-10 flex flex-col justify-end h-full p-8">
+            <img src={gallery2} alt="Electricity Cost Too High!" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div className="absolute bottom-0 left-0 w-full h-2/3 bg-linear-to-t from-navy/95 via-navy/70 to-transparent"></div>
+            <div className="relative z-10 flex flex-col justify-end h-full p-8 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               <h3 className="mb-3 text-2xl font-bold text-white group-hover:text-amber-400 transition-colors">Electricity Cost Too High!</h3>
-              <p className="text-white/80 leading-relaxed">The second highest cost goes to the electricity cost, ranking second to feeding.</p>
+              <p className="text-white/90 leading-relaxed font-medium">The second highest cost goes to the electricity cost, ranking second to feeding.</p>
             </div>
           </div>
         </FadeIn>
         <FadeIn delay={300} className="h-full">
           <div className="relative h-full min-h-[380px] rounded-4xl overflow-hidden group animate-float [animation-delay:2s] shadow-2xl border border-white/10">
-            <img src={problemMassiveLossImg} alt="Smaller Shrimp" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-navy/70 transition-colors duration-500 group-hover:bg-navy/50 backdrop-blur-[2px]"></div>
-            <div className="absolute inset-0 bg-linear-to-t from-navy/95 via-navy/40 to-transparent"></div>
-            <div className="relative z-10 flex flex-col justify-end h-full p-8">
+            <img src={gallery3} alt="Smaller Shrimp" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div className="absolute bottom-0 left-0 w-full h-2/3 bg-linear-to-t from-navy/95 via-navy/70 to-transparent"></div>
+            <div className="relative z-10 flex flex-col justify-end h-full p-8 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               <h3 className="mb-3 text-2xl font-bold text-white group-hover:text-sunset-orange transition-colors">Smaller Shrimp</h3>
-              <p className="text-white/80 leading-relaxed">Farmers are forced to harvest their shrimp earlier, meaning a smaller harvest; lower revenue.</p>
+              <p className="text-white/90 leading-relaxed font-medium">Farmers are forced to harvest their shrimp earlier, meaning a smaller harvest; lower revenue.</p>
             </div>
           </div>
         </FadeIn>
@@ -170,12 +167,12 @@ const Problem = () => (
 
 const Solution = () => (
   <section id="solution" className="relative overflow-hidden px-4 py-20">
-    <div className="absolute right-0 top-1/2 z-[-1] h-96 w-96 translate-x-1/2 rounded-full bg-sunset-skyblue/10 blur-[120px]"></div>
+    <div className="absolute right-0 top-1/2 z-[-1] h-96 w-96 translate-x-1/2 rounded-full bg-sunset-orange/10 blur-[120px]"></div>
     <div className="mx-auto max-w-7xl">
       <div className="grid items-center gap-12 lg:grid-cols-2">
         <FadeIn className="space-y-8">
           <h2 className="text-3xl font-bold leading-tight text-white md:text-5xl">
-            Plug, Play, and <span className="text-sunset-skyblue">Protect.</span>
+            Plug, Play, and <span className="text-sunset-orange">Protect.</span>
           </h2>
           <p className="text-xl leading-relaxed text-lightgrey">We install directly onto your existing equipment.</p>
 
@@ -217,15 +214,15 @@ const Team = () => (
     <div className="absolute inset-0 z-0">
       <img src={hardwareImg} alt="Background" className="h-full w-full object-cover opacity-[0.03] mix-blend-luminosity" />
     </div>
-    <div className="relative z-10 mx-auto max-w-7xl">
+    <div className="relative z-10 mx-auto max-w-5xl">
       <FadeIn>
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">Meet the Innovators.</h2>
-          <p className="text-xl text-lightgrey">A focused founding team spanning product, AI, growth, and hardware design.</p>
+        <div className="mx-auto mb-10 max-w-2xl text-center">
+          <h2 className="mb-4 text-2xl font-bold text-white md:text-4xl">Meet the Innovators.</h2>
+          <p className="text-lg text-lightgrey">A focused founding team spanning product, AI, growth, and hardware design.</p>
         </div>
       </FadeIn>
 
-      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4 mb-12">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 mb-10 mx-auto max-w-4xl">
         {[
           { name: 'Frans (郭凡思)', role: 'CEO, Product Strategy', image: teamFrans },
           { name: 'Jason (陈建豪)', role: 'COO, AI Systems & Data', image: teamJason },
@@ -233,47 +230,30 @@ const Team = () => (
           { name: 'Jai Jai (孫宏才)', role: 'CTO, Hardware Design', image: teamJaiJai },
         ].map((member, index) => (
           <FadeIn key={member.name} delay={index * 100}>
-            <div className="group relative overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-xl backdrop-blur-xl">
+            <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-lg backdrop-blur-xl">
               <div className="relative aspect-3/4 overflow-hidden bg-navy">
                 <img src={member.image} alt={member.name} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-linear-to-t from-navy/90 via-navy/30 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-navy/95 via-navy/20 to-transparent"></div>
               </div>
-              <div className="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition-transform">
-                <h3 className="text-2xl font-bold text-white">{member.name}</h3>
-                <p className="mt-1 text-xs font-bold uppercase tracking-[0.15em] text-sunset-skyblue">{member.role}</p>
+              <div className="absolute bottom-0 left-0 w-full p-4 translate-y-1 group-hover:translate-y-0 transition-transform">
+                <h3 className="text-lg font-bold text-white leading-tight">{member.name}</h3>
+                <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.1em] text-sunset-orange">{member.role}</p>
               </div>
             </div>
           </FadeIn>
         ))}
       </div>
-      
-      <FadeIn delay={400}>
-        <div className="flex flex-wrap justify-center gap-6">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <Mail className="w-5 h-5 text-lightgrey" />
-            <span className="text-white/90">ddieong04@gmail.com</span>
-          </div>
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <Smartphone className="w-5 h-5 text-lightgrey" />
-            <span className="text-white/90">+886 95380908 (Daniel)</span>
-          </div>
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <Smartphone className="w-5 h-5 text-lightgrey" />
-            <span className="text-white/90">+886 97072303 (Jason)</span>
-          </div>
-        </div>
-      </FadeIn>
     </div>
   </section>
 );
 
 const Gallery = () => {
-  const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8];
+  const images = [webImg1, webImg2, webImg4, webImg5];
   
   return (
     <section className="relative overflow-hidden py-24">
       <div className="mb-12 text-center px-4 relative z-10">
-        <h2 className="text-3xl font-bold text-white md:text-5xl">Real Operations, <span className="text-sunset-skyblue">Real Impact.</span></h2>
+        <h2 className="text-3xl font-bold text-white md:text-5xl">Real Operations, <span className="text-sunset-orange">Real Impact.</span></h2>
         <p className="mt-4 text-xl text-lightgrey">A glimpse into our pilot testing and field deployments across Asia.</p>
       </div>
       
@@ -295,40 +275,6 @@ const Gallery = () => {
 };
 
 
-const CTASection = () => {
-  const navigate = useNavigate(); 
-
-  return (
-    <section id="contact" className="relative overflow-hidden border-t border-tealblue/30 px-4 py-20 md:py-24">
-      <div className="absolute inset-0 z-0">
-      <img src={shrimpPondImg} alt="Aquaculture pond background" className="h-full w-full object-cover opacity-70" />
-      <div className="absolute inset-0 bg-linear-to-r from-navy/95 via-navy/75 to-navy/40"></div>
-    </div>
-
-      <div className="relative z-10 mx-auto max-w-5xl text-center">
-        <FadeIn>
-          <div className="rounded-4xl border border-white/10 bg-white/5 px-6 py-12 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl md:px-12 md:py-16">
-            <h2 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-white drop-shadow-lg md:text-6xl">Built for the Future of Aquaculture.</h2>
-            <p className="mx-auto mb-10 max-w-3xl text-xl font-medium leading-relaxed text-white/90">
-              Join the farmers in Taiwan and Indonesia who are already committing to our pilot program. Let's make your farm smarter, together.
-            </p>
-            <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <a href="mailto:ddieong04@gmail.com" className="inline-flex items-center justify-center gap-2 rounded-full bg-sunset-orange px-8 py-4 text-lg font-bold text-white shadow-[0_0_20px_rgba(255,145,16,0.45)] transition hover:-translate-y-1 hover:bg-sunset-orange/90">
-                Contact Us to Upgrade Your Farm <ArrowRight className="h-5 w-5" />
-              </a>
-              
-              <button onClick={() => navigate('/investor')} className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-lg font-bold text-white transition hover:-translate-y-1 hover:bg-white/10">
-                Become Our Partner
-              </button>
-            </div>
-          </div>
-        </FadeIn>
-      </div>
-    </section>
-  );
-};
-
-
 
 export default function Home() {
   useEffect(() => {
@@ -336,7 +282,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-navy text-white selection:bg-sunset-skyblue selection:text-navy relative">
+    <div className="min-h-screen bg-navy text-white selection:bg-sunset-orange selection:text-navy relative">
       <CursorGlow />
       <Navbar />
       <Hero />       
@@ -344,7 +290,7 @@ export default function Home() {
       <Solution />
       <Team />
       <Gallery />
-      <CTASection /> 
+      <ContactSection />
       <Footer />
     </div>
   );
