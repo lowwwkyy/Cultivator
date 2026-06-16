@@ -10,7 +10,7 @@ import { ContactSection } from '../components/ContactSection';
 import logoImg from '../assets/cultivator_logo.jpeg';
 
 import aeratorsImg from '../assets/aerators.jpg';
-import electricityImg from '../assets/electricity.heic';
+import electricityImg from '../assets/electricity.jpg';
 import smallerShrimpImg from '../assets/smaller_shrimp.jpg';
 import productImg from '../assets/product_img.jpeg';
 import softwareImg from '../assets/software_img.png';
@@ -185,19 +185,19 @@ const Solution = () => (
           </div>
         </FadeIn>
 
-        <FadeIn delay={150} className="grid items-stretch gap-4 md:grid-cols-2">
-          <div className="relative min-h-80 overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-2xl md:min-h-115">
-            <img src={productImg} alt="Hardware mounted on aerator" className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-linear-to-t from-navy/75 via-transparent to-transparent"></div>
-            <div className="absolute bottom-0 left-0 p-5">
-              <p className="font-semibold text-white">Hardware on Aerator</p>
+        <FadeIn delay={150} className="flex flex-col gap-6">
+          <div className="relative min-h-64 md:min-h-[280px] w-full overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-2xl">
+            <img src={productImg} alt="Hardware mounted on aerator" className="absolute inset-0 h-full w-full object-cover object-center" />
+            <div className="absolute inset-0 bg-linear-to-t from-navy/90 via-navy/20 to-transparent"></div>
+            <div className="absolute bottom-0 left-0 p-6 md:p-8">
+              <p className="text-xl font-bold text-white tracking-wide">Hardware on Aerator</p>
             </div>
           </div>
-          <div className="relative min-h-80 overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-2xl md:min-h-115">
-            <img src={softwareImg} alt="AeroTrust mobile dashboard mockup" className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-linear-to-t from-navy/75 via-transparent to-transparent"></div>
-            <div className="absolute bottom-0 left-0 p-5">
-              <p className="font-semibold text-white">AeroTrust Dashboard</p>
+          <div className="relative min-h-64 md:min-h-[280px] w-full overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-2xl">
+            <img src={softwareImg} alt="AeroTrust mobile dashboard mockup" className="absolute inset-0 h-full w-full object-cover object-top" />
+            <div className="absolute inset-0 bg-linear-to-t from-navy/90 via-navy/20 to-transparent"></div>
+            <div className="absolute bottom-0 left-0 p-6 md:p-8">
+              <p className="text-xl font-bold text-white tracking-wide">AeroTrust Dashboard</p>
             </div>
           </div>
         </FadeIn>
