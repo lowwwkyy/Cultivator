@@ -5,28 +5,25 @@ import { useNavigate } from 'react-router-dom';
 
 import heroImg from '../assets/hero.png';
 import hardwareImg from '../assets/asia/S__238305299_0.jpg';
-import appUiImg from '../assets/jason/DSC05276.JPG';
 import heroVideo from '../assets/thailand_shrimp_farm_video.mp4';
 import { ContactSection } from '../components/ContactSection';
 import logoImg from '../assets/cultivator_logo.jpeg';
 
-import problemSilentFailImg from '../assets/problem_silent_fail.png';
-import problemMassiveLossImg from '../assets/problem_massive_loss.png';
-import problemFragileOpsImg from '../assets/problem_fragile_ops.png';
+import aeratorsImg from '../assets/aerators.jpg';
+import electricityImg from '../assets/electricity.heic';
+import smallerShrimpImg from '../assets/smaller_shrimp.jpg';
+import productImg from '../assets/product_img.jpeg';
+import softwareImg from '../assets/software_img.png';
 
-import gallery1 from '../assets/asia/S__238305288_0.jpg';
-import gallery2 from '../assets/jason/DSC05256.JPG';
-import gallery3 from '../assets/asia/S__238305295_0.jpg';
 import webImg1 from '../assets/web_img1.jpg';
 import webImg2 from '../assets/web_img2.jpg';
 import webImg3 from '../assets/web_img3.HEIC';
 import webImg4 from '../assets/web_img4.jpeg';
 import webImg5 from '../assets/web_img5.jpeg';
 
-import teamFrans from '../assets/jason/DSC05281.JPG';
-import teamDelon from '../assets/jason/DSC05310.JPG';
-import teamJason from '../assets/jason/DSC05327.JPG';
-import teamJaiJai from '../assets/jason/DSC05255.JPG';
+import teamFrans from '../assets/frans_pic.jpg';
+import teamJason from '../assets/jason_pic.jpg';
+import teamPlaceholder from '../assets/whoisthis.jpg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -132,7 +129,7 @@ const Problem = () => (
       <div className="grid gap-6 md:grid-cols-3">
         <FadeIn delay={100} className="h-full">
           <div className="relative h-full min-h-[380px] rounded-4xl overflow-hidden group animate-float [animation-delay:0s] shadow-2xl border border-white/10">
-            <img src={gallery1} alt="Failures go undetected" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img src={aeratorsImg} alt="Failures go undetected" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute bottom-0 left-0 w-full h-2/3 bg-linear-to-t from-navy/95 via-navy/70 to-transparent"></div>
             <div className="relative z-10 flex flex-col justify-end h-full p-8 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               <h3 className="mb-3 text-2xl font-bold text-white group-hover:text-rose-400 transition-colors">Failures go undetected</h3>
@@ -142,7 +139,7 @@ const Problem = () => (
         </FadeIn>
         <FadeIn delay={200} className="h-full">
           <div className="relative h-full min-h-[380px] rounded-4xl overflow-hidden group animate-float [animation-delay:1s] shadow-2xl border border-white/10">
-            <img src={gallery2} alt="Electricity Cost Too High!" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img src={electricityImg} alt="Electricity Cost Too High!" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute bottom-0 left-0 w-full h-2/3 bg-linear-to-t from-navy/95 via-navy/70 to-transparent"></div>
             <div className="relative z-10 flex flex-col justify-end h-full p-8 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               <h3 className="mb-3 text-2xl font-bold text-white group-hover:text-amber-400 transition-colors">Electricity Cost Too High!</h3>
@@ -152,7 +149,7 @@ const Problem = () => (
         </FadeIn>
         <FadeIn delay={300} className="h-full">
           <div className="relative h-full min-h-[380px] rounded-4xl overflow-hidden group animate-float [animation-delay:2s] shadow-2xl border border-white/10">
-            <img src={gallery3} alt="Smaller Shrimp" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img src={smallerShrimpImg} alt="Smaller Shrimp" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute bottom-0 left-0 w-full h-2/3 bg-linear-to-t from-navy/95 via-navy/70 to-transparent"></div>
             <div className="relative z-10 flex flex-col justify-end h-full p-8 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               <h3 className="mb-3 text-2xl font-bold text-white group-hover:text-sunset-orange transition-colors">Smaller Shrimp</h3>
@@ -190,14 +187,14 @@ const Solution = () => (
 
         <FadeIn delay={150} className="grid items-stretch gap-4 md:grid-cols-2">
           <div className="relative min-h-80 overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-2xl md:min-h-115">
-            <img src={hardwareImg} alt="Hardware mounted on aerator" className="absolute inset-0 h-full w-full object-cover" />
+            <img src={productImg} alt="Hardware mounted on aerator" className="absolute inset-0 h-full w-full object-cover" />
             <div className="absolute inset-0 bg-linear-to-t from-navy/75 via-transparent to-transparent"></div>
             <div className="absolute bottom-0 left-0 p-5">
               <p className="font-semibold text-white">Hardware on Aerator</p>
             </div>
           </div>
           <div className="relative min-h-80 overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-2xl md:min-h-115">
-            <img src={appUiImg} alt="AeroTrust mobile dashboard mockup" className="absolute inset-0 h-full w-full object-cover" />
+            <img src={softwareImg} alt="AeroTrust mobile dashboard mockup" className="absolute inset-0 h-full w-full object-cover" />
             <div className="absolute inset-0 bg-linear-to-t from-navy/75 via-transparent to-transparent"></div>
             <div className="absolute bottom-0 left-0 p-5">
               <p className="font-semibold text-white">AeroTrust Dashboard</p>
@@ -226,13 +223,19 @@ const Team = () => (
         {[
           { name: 'Frans (郭凡思)', role: 'CEO, Product Strategy', image: teamFrans },
           { name: 'Jason (陈建豪)', role: 'COO, AI Systems & Data', image: teamJason },
-          { name: 'Delon (羊忠誠)', role: 'CMO, Marketing & Growth', image: teamDelon },
-          { name: 'Jai Jai (孫宏才)', role: 'CTO, Hardware Design', image: teamJaiJai },
+          { name: 'Delon (羊忠誠)', role: 'CMO, Marketing & Growth', image: teamPlaceholder },
+          { name: 'Jai Jai (孫宏才)', role: 'CTO, Hardware Design', image: teamPlaceholder },
         ].map((member, index) => (
           <FadeIn key={member.name} delay={index * 100}>
             <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-lg backdrop-blur-xl">
-              <div className="relative aspect-3/4 overflow-hidden bg-navy">
-                <img src={member.image} alt={member.name} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="relative aspect-[3/4] overflow-hidden bg-black">
+                {member.image ? (
+                  <img src={member.image} alt={member.name} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                ) : (
+                  <div className="absolute inset-0 bg-[#080b12] flex items-center justify-center">
+                    <span className="text-white/20 font-bold tracking-widest uppercase">No Photo</span>
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-linear-to-t from-navy/95 via-navy/20 to-transparent"></div>
               </div>
               <div className="absolute bottom-0 left-0 w-full p-4 translate-y-1 group-hover:translate-y-0 transition-transform">
