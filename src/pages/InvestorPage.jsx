@@ -375,82 +375,66 @@ const Market = () => {
 // );
 
 const Roadmap = () => {
-  const [activeTab, setActiveTab] = useState('3months');
-
-  const months = [
-    { year: 'Month 1 (May)', title: 'Prototype Finalization', text: 'Finalize device, build pilot units, waterproof case, confirm farms. Output: pilot-ready devices.' },
-    { year: 'Month 2 (June)', title: 'Field Deployment', text: 'Install devices, collect data, test alerts, gather feedback. Output: real-world validation.' },
-    { year: 'Month 3 (July)', title: 'Validation & Hult', text: 'Analyze results, improve product, prepare for scaling. Output: pilot report + next-step strategy.' },
-  ];
-
-  const years = [
-    { year: '2026', title: 'Final MVP', text: 'Final MVP and Pilot farms (50 Farmers).' },
-    { year: '2027', title: 'Precision Prototype', text: 'Precision Prototype (50 Farms).' },
-    { year: '2028', title: 'B2B2F Launch', text: '200 Farmers. Expansion to South East Asia.' },
-    { year: '2029', title: 'Operational BEP', text: '5,000 Farmers, Operational BEP, 1,260 Ponds.' },
-    { year: '2030', title: 'Asia Expansion', text: '15,000 Farmers Across Asia.' },
+  
+  const timelineData = [
+    { type: 'immediate', time: 'Month 1 (May)', title: 'Prototype Finalization', text: 'Finalize device, build pilot units, waterproof case, confirm farms. Output: pilot-ready devices.' },
+    { type: 'immediate', time: 'Month 2 (June)', title: 'Field Deployment', text: 'Install devices, collect data, test alerts, gather feedback. Output: real-world validation.' },
+    { type: 'immediate', time: 'Month 3 (July)', title: 'Validation & Hult', text: 'Analyze results, improve product, prepare for scaling. Output: pilot report + next-step strategy.' },
+    { type: 'long-term', time: '2026', title: 'Final MVP', text: 'Final MVP and Pilot farms (50 Farmers).' },
+    { type: 'long-term', time: '2027', title: 'Precision Prototype', text: 'Precision Prototype (50 Farms).' },
+    { type: 'long-term', time: '2028', title: 'B2B2F Launch', text: '200 Farmers. Expansion to South East Asia.' },
+    { type: 'long-term', time: '2029', title: 'Operational BEP', text: '1,000 Farmers, Operational BEP, 1,260 Ponds.' },
+    { type: 'long-term', time: '2030', title: 'Asia Expansion', text: '5,000 Farmers Across Asia.' },
   ];
 
   return (
     <section id="roadmap" className="relative overflow-hidden border-y border-tealblue/20 bg-navy/60 px-4 py-20">
-      <div className="absolute inset-0 z-0">
-        <img src={shrimpPondImg} alt="Background" className="h-full w-full object-cover opacity-[0.03] mix-blend-luminosity" />
-      </div>
+      {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(85,212,255,0.08),transparent_45%)]"></div>
-      <div className="relative z-10 mx-auto max-w-7xl">
+      
+      <div className="relative z-10 mx-auto max-w-4xl">
         <FadeIn>
-          <div className="mx-auto mb-10 max-w-3xl text-center">
-            <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">The Path to 15,000 Farms.</h2>
-            <p className="text-xl text-lightgrey">Real farm testing. Product validation. Stronger path to Hult Global Stage.</p>
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">The Path to 5,000 Farms.</h2>
+            <p className="text-xl text-lightgrey">From pilot validation in Taiwan to mass adoption across Southeast Asia.</p>
           </div>
         </FadeIn>
 
-        <div className="flex justify-center mb-12 relative z-10">
-          <div className="inline-flex bg-white/5 rounded-full p-1 border border-white/10 backdrop-blur-md">
-            <button 
-              onClick={() => setActiveTab('3months')}
-              className={`px-8 py-3 rounded-full text-lg font-bold transition-all ${activeTab === '3months' ? 'bg-sunset-orange text-navy shadow-[0_0_15px_rgba(85,212,255,0.4)]' : 'text-white/70 hover:text-white'}`}
-            >
-              Next 3 Months
-            </button>
-            <button 
-              onClick={() => setActiveTab('5years')}
-              className={`px-8 py-3 rounded-full text-lg font-bold transition-all ${activeTab === '5years' ? 'bg-sunset-orange text-navy shadow-[0_0_15px_rgba(85,212,255,0.4)]' : 'text-white/70 hover:text-white'}`}
-            >
-              Next 5 Years
-            </button>
+        {/* The Timeline Container */}
+        <div className="relative">
+          
+          {/* The Vertical Line Background */}
+          {/* We position this absolutely to the left. The gradient gives it a cool fading effect at the bottom. */}
+          <div className="absolute bottom-0 left-[19px] top-4 w-1 rounded-full bg-linear-to-b from-sunset-orange via-sunset-skyblue/50 to-transparent md:left-[23px]"></div>
+
+          <div className="space-y-8 md:space-y-12">
+            {timelineData.map((step, index) => (
+              <FadeIn key={index} delay={index * 100}>
+                {/* Each Timeline Item needs padding on the left to make room for the line */}
+                <div className="relative pl-12 md:pl-16">
+                  
+                  {/* The Node (Dot) on the line */}
+                  <div className={`absolute left-[15px] top-6 h-3 w-3 rounded-full shadow-[0_0_15px_rgba(0,0,0,0.8)] z-10 md:left-[19px] ${
+                    step.type === 'immediate' ? 'bg-sunset-orange shadow-sunset-orange/50' : 'bg-sunset-skyblue shadow-sunset-skyblue/50'
+                  }`}></div>
+
+                  {/* The Content Card */}
+                  <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/10">
+                    <div className={`mb-3 inline-flex rounded-full px-3 py-1 text-xs font-bold tracking-[0.15em] ${
+                      step.type === 'immediate' ? 'bg-sunset-orange/15 text-sunset-orange' : 'bg-sunset-skyblue/15 text-sunset-skyblue'
+                    }`}>
+                      {step.time}
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold text-white md:text-2xl">{step.title}</h3>
+                    <p className="text-sm leading-relaxed text-lightgrey md:text-base">{step.text}</p>
+                  </div>
+
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
 
-        <div className="relative min-h-[300px]">
-          <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${activeTab === '3months' ? 'opacity-100 translate-y-0 z-10 relative' : 'opacity-0 translate-y-8 pointer-events-none absolute'}`}>
-            <div className="grid gap-6 lg:grid-cols-3">
-              {months.map((step) => (
-                <div key={step.year} className="relative h-full rounded-4xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                  <div className="mb-4 inline-flex rounded-full bg-sunset-orange/15 px-4 py-1 text-sm font-bold tracking-[0.1em] text-sunset-orange">
-                    {step.year}
-                  </div>
-                  <h3 className="mb-3 text-2xl font-bold text-white">{step.title}</h3>
-                  <p className="text-lightgrey leading-relaxed">{step.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className={`transition-all duration-500 ease-in-out ${activeTab === '5years' ? 'opacity-100 translate-y-0 z-10 relative' : 'opacity-0 translate-y-8 pointer-events-none absolute'}`}>
-            <div className="grid gap-4 lg:grid-cols-5">
-              {years.map((step) => (
-                <div key={step.year} className="relative h-full rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                  <div className="mb-4 inline-flex rounded-full bg-sunset-orange/15 px-3 py-1 text-xs font-bold tracking-[0.15em] text-sunset-orange">
-                    {step.year}
-                  </div>
-                  <h3 className="mb-2 text-lg font-bold text-white">{step.title}</h3>
-                  <p className="text-lightgrey text-sm leading-relaxed">{step.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
