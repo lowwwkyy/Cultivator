@@ -14,6 +14,7 @@ import electricityImg from '../assets/electricity.jpg';
 import smallerShrimpImg from '../assets/smaller_shrimp.jpg';
 import productImg from '../assets/product_img.jpeg';
 import softwareImg from '../assets/software_img.png';
+import orangeShrimp from "../assets/Orange_Shrimp.png"
 
 import webImg1 from '../assets/web_img1.jpg';
 import webImg2 from '../assets/web_img2.jpg';
@@ -74,6 +75,63 @@ const Navbar = () => {
     </div>
   );
 };
+
+// const ShrimpRain = () => {
+//   const [isRaining, setIsRaining] = useState(true);
+
+//   useEffect(() => {
+  
+//     const timer = setTimeout(() => setIsRaining(false), 7000);
+//     return () => clearTimeout(timer);
+//   }, []);
+
+//   if (!isRaining) return null;
+
+
+//   const shrimps = Array.from({ length: 40 }).map((_, i) => ({
+//     id: i,
+//     left: `${Math.random() * 100}vw`,
+//     animationDuration: `${Math.random() * 3 + 2}s`, 
+//     animationDelay: `${Math.random() * 2}s`,        
+//     size: `${Math.random() * 2 + 1.5}rem`,         
+//   }));
+
+//   return (
+//     <div className="pointer-events-none fixed inset-0 z-[100] overflow-hidden">
+//       <style>
+//         {`
+//           @keyframes shrimpFall {
+//             0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+//             100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+//           }
+//           .shrimp-drop {
+//             position: absolute;
+//             top: -10%;
+//             animation-name: shrimpFall;
+//             animation-timing-function: linear;
+//             animation-fill-mode: forwards;
+//           }
+//         `}
+//       </style>
+      
+//       {shrimps.map((shrimp) => (
+//         <div
+//           key={shrimp.id}
+//           className="shrimp-drop"
+//           style={{
+//             left: shrimp.left,
+//             animationDuration: shrimp.animationDuration,
+//             animationDelay: shrimp.animationDelay,
+//             fontSize: shrimp.size,
+//           }}
+//         >
+//           {<img src={orangeShrimp} className="w-8 h-8 object-contain" alt="" />}
+          
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
 
 const Hero = () => {
   const navigate = useNavigate(); 
@@ -288,6 +346,7 @@ export default function Home() {
     <div className="min-h-screen bg-navy text-white selection:bg-sunset-orange selection:text-navy relative">
       <CursorGlow />
       <Navbar />
+      {/* <ShrimpRain /> */}
       <Hero />       
       <Problem />
       <Solution />
